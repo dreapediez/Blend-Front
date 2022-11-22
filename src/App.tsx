@@ -1,9 +1,21 @@
 import AppStyled from "./AppStyled";
+import Button from "./components/Button/Button";
 
 const App = () => {
   return (
     <AppStyled>
-      <div className="App"></div>
+      <Button
+        text="Login"
+        buttonType="dark"
+        ariaLabel="next page"
+        action={() => {}}
+      />
+      <Button
+        text="Sign Up"
+        buttonType="light"
+        ariaLabel="next page"
+        action={() => {}}
+      />
     </AppStyled>
   );
 };
