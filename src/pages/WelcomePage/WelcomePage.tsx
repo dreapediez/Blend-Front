@@ -15,14 +15,12 @@ const HomePage = (): JSX.Element => {
         text="Log In"
         buttonType="dark"
         ariaLabel="Log in page"
-        action={() => {}}
       />
       <Button
         className="welcome-page__button"
         text="Sign Up"
         buttonType="light"
         ariaLabel="Sign up page"
-        action={() => {}}
       />
     </WelcomePageStyled>
   );
