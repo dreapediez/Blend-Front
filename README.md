@@ -2,8 +2,8 @@
 
 ## Introduction:
 
-Blend is a project created with the aim objective to complement an Advent Christmas Calendar product with a digital experience. In Blend you can add a new tea post every day, sharing a photo and a summary to improve the classic advent calendar experience.
-That project has been created to develop all the skills and abilities that I have been learning in last two and a half months at the bootcamp ISDI Coders.
+Blend is a project created with the main objective to complement an Advent Christmas Calendar product with a digital experience. In Blend you can add a new tea post daily, share a photo and a summary to improve the classic advent calendar experience.
+This project has been created in order to develop all the skills and abilities that I have learned over the past two and a half months at the bootcamp ISDI Coders, thanks to the teacher and senior Web Developer Mario González Lendínez.
 
 ## Technologies:
 
