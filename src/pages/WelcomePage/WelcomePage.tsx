@@ -11,16 +11,18 @@ const HomePage = (): JSX.Element => {
       />
       <h2 className="welcome-page__title">You are my favorite tea moment</h2>
       <Button
+        type="link"
+        to="/login"
         className="welcome-page__button"
         text="Log In"
-        buttonType="dark"
-        ariaLabel="Log in page"
+        styletype="dark"
       />
       <Button
+        type="link"
+        to="/register"
         className="welcome-page__button"
-        text="Sign Up"
-        buttonType="light"
-        ariaLabel="Sign up page"
+        text="Register"
+        styletype="light"
       />
     </WelcomePageStyled>
   );
