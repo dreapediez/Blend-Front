@@ -13,13 +13,21 @@ const darkButton = css`
   width: 320px;
   height: 55px;
   border: none;
+  &:hover {
+    background-color: ${mainStyleColors.accentColorHover};
+  }
 `;
 const lightButton = css`
-  background-color: transparent;
+  background-color: ${mainStyleColors.neutralColor};
   color: ${mainStyleColors.accentColor};
   width: 320px;
   height: 55px;
   border: 2px solid ${mainStyleColors.accentColor};
+  &:hover {
+    background-color: ${mainStyleColors.neutralColorHover};
+    border: none;
+    color: ${mainStyleColors.neutralColor};
+  }
 `;
 const darkSmallButton = css`
   background-color: ${mainStyleColors.accentColor};
@@ -27,13 +35,21 @@ const darkSmallButton = css`
   width: 100px;
   height: 75px;
   border: none;
+  &:hover {
+    background-color: ${mainStyleColors.accentColorHover};
+  }
 `;
 const lightSmallButton = css`
-  background-color: transparent;
+  background-color: ${mainStyleColors.neutralColor};
   color: ${mainStyleColors.accentColor};
   width: 100px;
   height: 75px;
   border: 2px solid ${mainStyleColors.accentColor};
+  &:hover {
+    background-color: ${mainStyleColors.neutralColorHover};
+    border: none;
+    color: ${mainStyleColors.neutralColor};
+  }
 `;
 
 const ButtonStyled = styled.button<ButtonStyledProps>`

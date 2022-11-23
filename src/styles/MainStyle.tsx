@@ -8,8 +8,7 @@ const MainStyle = createGlobalStyle`
 }
 
 body {
-  height: 100vh;
-  margin: 0;
+  height: 100%;
   font-family: ${mainStyleFonts.secondaryFont};
   color: ${mainStyleColors.textMainColor};
 }
@@ -20,9 +19,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
   font-family: ${mainStyleFonts.mainFont};
   color: ${mainStyleColors.textMainColor};
+  font-weight: ${mainStyleFonts.mainFontRegular};
 }
 
 a {

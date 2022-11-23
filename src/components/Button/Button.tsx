@@ -4,6 +4,7 @@ interface ButtonProps {
   buttonType: "dark" | "light" | "darkSmall" | "lightSmall";
   text: string;
   ariaLabel: string;
+  className?: string;
   action: () => void;
 }
 
