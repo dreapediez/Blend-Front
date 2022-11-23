@@ -2,7 +2,7 @@ import styled from "styled-components";
 import mainStyleColors from "../../styles/mainStyleColors";
 import mainStyleFonts from "../../styles/mainStyleFonts";
 
-const WelcomePageStyled = styled.div`
+const WelcomePageStyled = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;

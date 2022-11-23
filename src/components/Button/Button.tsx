@@ -5,7 +5,7 @@ interface ButtonProps {
   text: string;
   ariaLabel: string;
   className?: string;
-  action: () => void;
+  action?: () => void;
 }
 
 const Button = ({
