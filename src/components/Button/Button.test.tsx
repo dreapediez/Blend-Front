@@ -46,7 +46,7 @@ describe("Given a Button component", () => {
       );
     });
 
-    test("and its should show a button with text 'Delete' on click", () => {
+    test("And its should show a button with text 'Delete' on click", () => {
       const textButton = "Delete";
       const buttonArialLabel = "button";
       const buttonTypeDarkSmall = "darkSmall";
@@ -67,5 +67,27 @@ describe("Given a Button component", () => {
 
       expect(buttonAction).toBeCalled();
     });
+  });
+
+  test("And its should show a button with text 'Delete' on click", () => {
+    const textButton = "Modify";
+    const buttonArialLabel = "button";
+    const buttonTypeLightSmall = "lightSmall";
+    const buttonAction = jest.fn();
+
+    render(
+      <Button
+        buttonType={buttonTypeLightSmall}
+        text={textButton}
+        action={buttonAction}
+        ariaLabel={buttonArialLabel}
+      />
+    );
+
+    const button = screen.queryByRole("button");
+
+    button?.click();
+
+    expect(buttonAction).toBeCalled();
   });
 });
