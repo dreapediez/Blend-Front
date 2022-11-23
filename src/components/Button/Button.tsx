@@ -1,28 +1,33 @@
-import ButtonStyled from "./ButtonStyled";
+import { ButtonStyled, LinkStyled } from "./ButtonStyled";
 
 interface ButtonProps {
-  buttonType: "dark" | "light" | "darkSmall" | "lightSmall";
+  styletype: "dark" | "light" | "darkSmall" | "lightSmall";
+  type: "submit" | "button" | "link";
   text: string;
-  ariaLabel: string;
   className?: string;
   action?: () => void;
+  to?: string;
 }
 
 const Button = ({
-  buttonType,
+  styletype,
+  type,
   text,
-  ariaLabel,
   action,
+  to = "",
 }: ButtonProps): JSX.Element => {
   return (
-    <ButtonStyled
-      buttonType={buttonType}
-      className="button"
-      onClick={action}
-      aria-label={ariaLabel}
-    >
-      {text}
-    </ButtonStyled>
+    <>
+      {type !== "link" ? (
+        <ButtonStyled styletype={styletype} className="button" onClick={action}>
+          {text}
+        </ButtonStyled>
+      ) : (
+        <LinkStyled styletype={styletype} className="button" to={to}>
+          {text}
+        </LinkStyled>
+      )}
+    </>
   );
 };
 

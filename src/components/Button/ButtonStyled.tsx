@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import mainStyleColors from "../../styles/mainStyleColors";
 import mainStyleFonts from "../../styles/mainStyleFonts";
 import mainStyleSizes from "../../styles/mainStyleSizes";
 
 interface ButtonStyledProps {
-  buttonType: "dark" | "light" | "darkSmall" | "lightSmall";
+  styletype: "dark" | "light" | "darkSmall" | "lightSmall";
 }
 
 const darkButton = css`
@@ -52,18 +53,25 @@ const lightSmallButton = css`
   }
 `;
 
-const ButtonStyled = styled.button<ButtonStyledProps>`
+const styledAsButton = css<ButtonStyledProps>`
   padding: ${mainStyleSizes.buttonPadding};
-  padding: 0;
+  padding: 12px 0;
   border-radius: 4px;
   font-family: ${mainStyleFonts.secondaryFont};
   font-weight: ${mainStyleFonts.mainFontRegular};
   font-size: ${mainStyleFonts.mediumFontSize};
+  text-align: center;
   cursor: pointer;
-  ${({ buttonType }) => buttonType === "dark" && darkButton}
-  ${({ buttonType }) => buttonType === "light" && lightButton}
-  ${({ buttonType }) => buttonType === "darkSmall" && darkSmallButton}
-  ${({ buttonType }) => buttonType === "lightSmall" && lightSmallButton}
+  ${({ styletype }) => styletype === "dark" && darkButton}
+  ${({ styletype }) => styletype === "light" && lightButton}
+  ${({ styletype }) => styletype === "darkSmall" && darkSmallButton}
+  ${({ styletype }) => styletype === "lightSmall" && lightSmallButton}
 `;
 
-export default ButtonStyled;
+export const ButtonStyled = styled.button<ButtonStyledProps>`
+  ${styledAsButton}
+`;
+
+export const LinkStyled = styled(Link)<ButtonStyledProps>`
+  ${styledAsButton}
+`;

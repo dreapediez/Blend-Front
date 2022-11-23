@@ -25,10 +25,10 @@ describe("Given a welcome page", () => {
     });
   });
 
-  describe("When their buttons are rendered with the text 'Log in' and 'Sign Up'", () => {
+  describe("When their buttons are rendered with the text 'Log in' and 'Register'", () => {
     test("Then it should show the buttons with the text received", () => {
-      const expectedLoginButtonText = "Log in page";
-      const expectedSignupButtonText = "Sign up page";
+      const expectedLoginLinkText = "Log In";
+      const expectedRegisterLinkText = "Register";
 
       render(
         <BrowserRouter>
@@ -38,15 +38,15 @@ describe("Given a welcome page", () => {
         </BrowserRouter>
       );
 
-      const loginButton = screen.queryByRole("button", {
-        name: expectedLoginButtonText,
+      const loginLink = screen.queryByRole("link", {
+        name: expectedLoginLinkText,
       });
-      const signupButton = screen.queryByRole("button", {
-        name: expectedSignupButtonText,
+      const registerLink = screen.queryByRole("link", {
+        name: expectedRegisterLinkText,
       });
 
-      expect(loginButton).toBeInTheDocument();
-      expect(signupButton).toBeInTheDocument();
+      expect(loginLink).toBeInTheDocument();
+      expect(registerLink).toBeInTheDocument();
     });
   });
 });
