@@ -6,7 +6,7 @@ interface FormInputProps {
   placeholder: string;
   type: string;
   name: string;
-  action?: () => void;
+  action?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
 }
 
