@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
-import useUser from "../../hooks/useUser";
+import useUser from "../../hooks/useUser/useUser";
 import RegisterPageStyled from "./RegisterPageStyled";
 
 const RegisterPage = (): JSX.Element => {
