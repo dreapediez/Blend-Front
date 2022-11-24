@@ -10,6 +10,7 @@ interface ButtonProps {
 }
 
 const Button = ({
+  className,
   styletype,
   type,
   text,
@@ -19,11 +20,15 @@ const Button = ({
   return (
     <>
       {type !== "link" ? (
-        <ButtonStyled styletype={styletype} className="button" onClick={action}>
+        <ButtonStyled
+          styletype={styletype}
+          className={className}
+          onClick={action}
+        >
           {text}
         </ButtonStyled>
       ) : (
-        <LinkStyled styletype={styletype} className="button" to={to}>
+        <LinkStyled styletype={styletype} className={className} to={to}>
           {text}
         </LinkStyled>
       )}
