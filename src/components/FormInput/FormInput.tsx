@@ -6,7 +6,6 @@ interface FormInputProps {
   placeholder: string;
   type: string;
   name: string;
-  id: string;
   action?: () => void;
   required?: boolean;
 }
@@ -16,7 +15,6 @@ const FormInput = ({
   placeholder,
   type,
   name,
-  id,
   action,
   required = false,
 }: FormInputProps): JSX.Element => {
@@ -33,7 +31,6 @@ const FormInput = ({
         placeholder={placeholder}
         type={type}
         name={name}
-        id={id}
         onChange={action}
         autoComplete="off"
         required={required}

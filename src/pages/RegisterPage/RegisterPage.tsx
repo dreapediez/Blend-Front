@@ -14,7 +14,6 @@ const RegisterPage = (): JSX.Element => {
             placeholder="Username"
             type="text"
             name="username"
-            id="username"
             action={() => {}}
             required={true}
           />
@@ -23,7 +22,6 @@ const RegisterPage = (): JSX.Element => {
             placeholder="Password"
             type="password"
             name="password"
-            id="password"
             action={() => {}}
             required={true}
           />
@@ -32,7 +30,6 @@ const RegisterPage = (): JSX.Element => {
             placeholder="Email"
             type="email"
             name="email"
-            id="email"
             action={() => {}}
             required={true}
           />
