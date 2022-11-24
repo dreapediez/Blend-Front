@@ -2,7 +2,7 @@ import styled from "styled-components";
 import mainStyleFonts from "../../styles/mainStyleFonts";
 import mainStyleColors from "../../styles/mainStyleColors";
 
-const RegisterPageStyled = styled.div`
+const RegisterPageStyled = styled.section`
   .form__item {
     display: flex;
     flex-direction: column;

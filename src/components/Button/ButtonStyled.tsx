@@ -62,6 +62,7 @@ const styledAsButton = css<ButtonStyledProps>`
   font-size: ${mainStyleFonts.mediumFontSize};
   text-align: center;
   cursor: pointer;
+  outline: none;
   ${({ styletype }) => styletype === "dark" && darkButton}
   ${({ styletype }) => styletype === "light" && lightButton}
   ${({ styletype }) => styletype === "darkSmall" && darkSmallButton}
