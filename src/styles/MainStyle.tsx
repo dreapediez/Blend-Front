@@ -22,6 +22,7 @@ h6 {
   font-family: ${mainStyleFonts.mainFont};
   color: ${mainStyleColors.textMainColor};
   font-weight: ${mainStyleFonts.mainFontRegular};
+  text-align: center;
 }
 
 a {

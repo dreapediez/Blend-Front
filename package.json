@@ -15,6 +15,7 @@
     "@types/react-dom": "^18.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
@@ -50,7 +51,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.ts",
+      "!src/index.tsx",
       "!src/server/index.ts",
       "!src/setupTests.ts",
       "!src/react-app-env.d.ts",
