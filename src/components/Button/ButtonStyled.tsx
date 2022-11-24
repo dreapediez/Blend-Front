@@ -26,7 +26,7 @@ const lightButton = css`
   border: 2px solid ${mainStyleColors.accentColor};
   &:hover {
     background-color: ${mainStyleColors.neutralColorHover};
-    border: none;
+    border: 2px solid ${mainStyleColors.neutralColorHover};
     color: ${mainStyleColors.neutralColor};
   }
 `;
