@@ -1,8 +1,8 @@
 import ModalStyled from "./ModalStyled";
-// import { FiXOctagon } from "react-icons/fi";
-// import { BsPatchCheckFill } from "react-icons/bs";
 import { ReactComponent as Success } from "../../assets/success.svg";
 import { ReactComponent as Error } from "../../assets/error.svg";
+import { hideModalActionCreator } from "../../redux/features/uiSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 interface ModalProps {
   type: "error" | "success";
@@ -10,6 +10,11 @@ interface ModalProps {
 }
 
 const Modal = ({ type, text }: ModalProps) => {
+  const dispatch = useAppDispatch();
+
+  const hideModal = () => {
+    dispatch(hideModalActionCreator());
+  };
   return (
     <ModalStyled type={type}>
       <div className="modal">
@@ -21,7 +26,7 @@ const Modal = ({ type, text }: ModalProps) => {
         <span className="modal__text">{text}</span>
         <i
           className="modal__close"
-          onClick={() => {}}
+          onClick={hideModal}
           aria-label="Close modal info"
         >
           {type === "success" ? (

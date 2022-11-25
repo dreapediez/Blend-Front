@@ -23,14 +23,14 @@ const useUser = () => {
       dispatch(
         showModalActionCreator({
           isError: false,
-          modalText: `The register has been successful`,
+          modalText: `You are already one of the Blendcommunity`,
         })
       );
     } catch {
       dispatch(
         showModalActionCreator({
           isError: true,
-          modalText: `The register has not been successful`,
+          modalText: `Something went wrong, please try again in a few minutes`,
         })
       );
     }

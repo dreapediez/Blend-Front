@@ -4,9 +4,13 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import { useAppSelector } from "./redux/hooks";
 
 const App = () => {
   const { pathname } = useLocation();
+  const {
+    modal: { modalText, isError, showModal },
+  } = useAppSelector((action) => action.ui);
 
   return (
     <AppStyled>
@@ -15,7 +19,9 @@ const App = () => {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
-      <Modal type="error" text={"You are already one of the Blendcommunity."} />
+      {showModal && (
+        <Modal type={isError ? "error" : "success"} text={modalText} />
+      )}
     </AppStyled>
   );
 };
