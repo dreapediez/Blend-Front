@@ -4,7 +4,7 @@ const mainStyleColors = {
   textLightColor: "#FFF",
 
   neutralColor: "#fff",
-  mainColor: "#C7D7ED",
+  mainColor: "#c7d7ed",
   accentColor: "#1F3451",
   accentLightColor: "#5D89C7",
   secondaryColor: "#A04063",

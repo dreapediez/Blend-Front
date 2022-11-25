@@ -6,6 +6,7 @@ const mainStyleFonts = {
   secondaryFont: "roboto, sans-serif",
   mainFontSize: "1rem",
   mediumFontSize: "20px",
+  superFontSize: "30px",
   smallFontSize: "0.9rem",
   mainFontRegular: 400,
   mainFontBold: 600,
