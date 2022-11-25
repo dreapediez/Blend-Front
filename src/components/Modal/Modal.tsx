@@ -30,9 +30,9 @@ const Modal = ({ type, text }: ModalProps) => {
           aria-label="Close modal info"
         >
           {type === "success" ? (
-            <Success className="form__icon" />
+            <Success className="form__icon" data-testid="icon" />
           ) : (
-            <Error className="form__icon" />
+            <Error className="form__icon" data-testid="icon" />
           )}
         </i>
       </div>
