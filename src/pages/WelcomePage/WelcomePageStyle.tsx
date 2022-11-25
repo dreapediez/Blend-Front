@@ -9,8 +9,8 @@ const WelcomePageStyled = styled.header`
   width: 100%;
   height: 100vh;
   padding: 50px 0;
-  background-image: url("/assets/background.png");
   gap: 20px;
+  position: absolute;
 
   .welcome-page__logo {
     width: 360px;
