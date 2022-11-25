@@ -9,6 +9,7 @@ const Header = (): JSX.Element => {
         <Logo
           className="welcome-page__logo"
           aria-label="A cup of tea with the text blend"
+          data-testid="logo-icon"
           width="360"
         />
       </Link>
