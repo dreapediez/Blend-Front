@@ -11,7 +11,6 @@ interface FormInputProps {
 }
 
 const FormInput = ({
-  className,
   placeholder,
   type,
   name,
@@ -34,6 +33,7 @@ const FormInput = ({
         onChange={action}
         autoComplete="off"
         required={required}
+        aria-label={name}
       />
     </FormInputStyled>
   );
