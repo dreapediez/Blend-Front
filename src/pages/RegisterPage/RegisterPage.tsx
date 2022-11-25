@@ -34,7 +34,6 @@ const RegisterPage = (): JSX.Element => {
       <form onSubmit={handleSubmit}>
         <div className="form__item">
           <FormInput
-            className="form__item-username"
             placeholder="Username"
             type="text"
             name="username"
@@ -42,7 +41,6 @@ const RegisterPage = (): JSX.Element => {
             action={handleFormValues}
           />
           <FormInput
-            className="form__item-username"
             placeholder="Password"
             type="password"
             name="password"
@@ -50,7 +48,6 @@ const RegisterPage = (): JSX.Element => {
             action={handleFormValues}
           />
           <FormInput
-            className="form__item-username"
             placeholder="Email"
             type="email"
             name="email"
