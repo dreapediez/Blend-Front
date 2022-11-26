@@ -28,7 +28,12 @@ const NotFoundPage = (): JSX.Element => {
         </Link>
       </HeaderStyled>
       <NotFoundPageStyled>
-        <Icon width="350" height="350" />
+        <Icon
+          width="350"
+          height="350"
+          aria-label="Not page found"
+          data-testid="404-icon"
+        />
 
         <span className="form-footer__link">
           Do you want some tea?
