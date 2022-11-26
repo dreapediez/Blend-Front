@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./redux/hooks";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -14,10 +15,11 @@ const App = () => {
 
   return (
     <AppStyled>
-      {"/" !== pathname && <Header />}
+      {"/register" === pathname && <Header />}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {showModal && (
         <Modal type={isError ? "error" : "success"} text={modalText} />

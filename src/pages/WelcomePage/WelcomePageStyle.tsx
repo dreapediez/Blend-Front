@@ -10,7 +10,6 @@ const WelcomePageStyled = styled.header`
   height: 100vh;
   padding: 50px 0;
   gap: 20px;
-  position: absolute;
 
   .welcome-page__logo {
     width: 360px;
