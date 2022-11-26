@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./redux/hooks";
+import LogInPage from "./pages/LogInPage/LogInPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
@@ -15,10 +16,11 @@ const App = () => {
 
   return (
     <AppStyled>
-      {"/register" === pathname && <Header />}
+      {["/register", "/login"].includes(pathname) && <Header />}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LogInPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {showModal && (
