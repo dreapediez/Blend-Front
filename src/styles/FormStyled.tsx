@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import mainStyleFonts from "../../styles/mainStyleFonts";
-import mainStyleColors from "../../styles/mainStyleColors";
+import mainStyleFonts from "./mainStyleFonts";
+import mainStyleColors from "./mainStyleColors";
 
-const RegisterPageStyled = styled.section`
+const FormStyled = styled.section`
   .form__item {
     display: flex;
     flex-direction: column;
@@ -25,4 +25,4 @@ const RegisterPageStyled = styled.section`
   }
 `;
 
-export default RegisterPageStyled;
+export default FormStyled;

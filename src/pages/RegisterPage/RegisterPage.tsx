@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
 import useUser from "../../hooks/useUser/useUser";
-import RegisterPageStyled from "./RegisterPageStyled";
+import FormStyled from "../../styles/FormStyled";
 
 const RegisterPage = (): JSX.Element => {
   const { registerUser } = useUser();
@@ -29,7 +29,7 @@ const RegisterPage = (): JSX.Element => {
     await registerUser(formData);
   };
   return (
-    <RegisterPageStyled>
+    <FormStyled>
       <h2 className="resiter-page__title">Join our community</h2>
       <form onSubmit={handleSubmit}>
         <div className="form__item">
@@ -70,7 +70,7 @@ const RegisterPage = (): JSX.Element => {
           </span>
         </div>
       </form>
-    </RegisterPageStyled>
+    </FormStyled>
   );
 };
 
