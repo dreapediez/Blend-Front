@@ -1,10 +1,9 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import ProviderWrapper from "../../mocks/ProviderWrapper";
-import { store } from "../../redux/store";
+import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
 import { UserRegisterCredentials } from "../../types/userTypes";
 import useUser from "./useUser";
 
-const dispatchSpy = jest.spyOn(store, "dispatch");
+const dispatchSpy = jest.spyOn(mockStore, "dispatch");
 
 describe("Given an useUser hook", () => {
   describe("When it's function registerUser is called with a username: Leonidas,  password: 123, email: leonidas@hotmail.com", () => {
@@ -12,7 +11,7 @@ describe("Given an useUser hook", () => {
       const {
         result: { current },
       } = renderHook(() => useUser(), {
-        wrapper: ProviderWrapper,
+        wrapper: makeWrapperMockStore,
       });
 
       const newUser: UserRegisterCredentials = {
@@ -36,7 +35,7 @@ describe("Given an useUser hook", () => {
       const {
         result: { current },
       } = renderHook(() => useUser(), {
-        wrapper: ProviderWrapper,
+        wrapper: makeWrapperMockStore,
       });
 
       const newUser: UserRegisterCredentials = {

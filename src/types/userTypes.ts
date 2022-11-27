@@ -10,7 +10,6 @@ export interface UserRegisterCredentials extends UserCredentials {
 export interface User {
   id: string;
   username: string;
-  email: string;
 }
 
 export interface UserState extends User {

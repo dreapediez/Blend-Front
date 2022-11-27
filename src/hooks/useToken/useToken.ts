@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import {
   loginUserActionCreator,
   removeUserActionCreator,
@@ -18,23 +19,32 @@ const useToken = (): UseTokenStructure => {
 
   const loadToken = useCallback(
     (token: string): void => {
-      window.localStorage.setItem("token", token);
+      try {
+        localStorage.setItem("token", token);
 
-      const user: JwtPayloadCustom = decodeToken(token);
+        const userData: JwtPayloadCustom = decodeToken(token);
 
-      dispatch(loginUserActionCreator(user));
+        dispatch(loginUserActionCreator(userData));
+      } catch (error: unknown) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modalText: `Something went wrong, please try again in a few minutes`,
+          })
+        );
+      }
     },
     [dispatch]
   );
 
   const removeToken = useCallback((): void => {
-    window.localStorage.removeItem("token");
+    localStorage.removeItem("token");
 
     dispatch(removeUserActionCreator());
   }, [dispatch]);
 
   const getToken = (): string | null => {
-    const token = window.localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     if (user.isLogged && !token) {
       removeToken();
