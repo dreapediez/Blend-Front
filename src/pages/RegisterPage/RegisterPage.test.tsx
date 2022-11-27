@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../redux/store";
+import { mockStore } from "../../mocks/makeWrapper";
 import RegisterPage from "./RegisterPage";
 
 describe("Given a register page", () => {
@@ -17,7 +17,7 @@ describe("Given a register page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <RegisterPage />
           </Provider>
         </BrowserRouter>
@@ -51,7 +51,7 @@ describe("Given a register page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <RegisterPage />
           </Provider>
         </BrowserRouter>

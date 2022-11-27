@@ -1,4 +1,4 @@
-import { UiState } from "../../types/modalTypes";
+import { UiState } from "../../../types/modalTypes";
 import {
   hideModalActionCreator,
   showModalActionCreator,

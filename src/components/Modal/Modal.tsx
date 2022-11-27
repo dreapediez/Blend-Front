@@ -1,8 +1,8 @@
 import ModalStyled from "./ModalStyled";
 import { ReactComponent as Success } from "../../assets/success.svg";
 import { ReactComponent as Error } from "../../assets/error.svg";
-import { hideModalActionCreator } from "../../redux/features/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
+import { hideModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 
 interface ModalProps {
   type: "error" | "success";

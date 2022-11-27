@@ -1,27 +1,66 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
+import useToken from "../../hooks/useToken/useToken";
+import useUser from "../../hooks/useUser/useUser";
 import FormStyled from "../../styles/FormStyled";
+import { UserCredentials } from "../../types/userTypes";
 
 const LogInPage = (): JSX.Element => {
+  const { loginUser } = useUser();
+  const { getToken } = useToken();
+  const navigate = useNavigate();
+
+  const initialLoginState = {
+    username: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState(initialLoginState);
+
+  const handleFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
+    const userTokenSubmit: UserCredentials = {
+      username: formData.username,
+      password: formData.password,
+    };
+
+    await loginUser(userTokenSubmit);
+
+    const token = getToken();
+
+    if (token) {
+      navigate("/calendar");
+    }
+  };
+
   return (
     <FormStyled>
       <h2 className="resiter-page__title">Welcome to Blendcommunity!</h2>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSubmit}>
         <div className="form__item">
           <FormInput
             placeholder="Username"
             type="text"
             name="username"
             required={true}
-            action={() => {}}
+            action={handleFormValues}
           />
           <FormInput
             placeholder="Password"
             type="password"
             name="password"
             required={true}
-            action={() => {}}
+            action={handleFormValues}
           />
         </div>
         <div className="form-footer">

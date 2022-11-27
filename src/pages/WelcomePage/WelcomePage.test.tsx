@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../redux/store";
+import { mockStore } from "../../mocks/makeWrapper";
 import WelcomePage from "./WelcomePage";
 
 describe("Given a welcome page", () => {
@@ -11,7 +11,7 @@ describe("Given a welcome page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <WelcomePage />
           </Provider>
         </BrowserRouter>
@@ -32,7 +32,7 @@ describe("Given a welcome page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <WelcomePage />
           </Provider>
         </BrowserRouter>

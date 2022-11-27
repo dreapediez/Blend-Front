@@ -1,6 +1,3 @@
-import "@fontsource/roboto";
-import "@fontsource/poppins";
-
 const mainStyleFonts = {
   mainFont: "poppins, sans-serif",
   secondaryFont: "roboto, sans-serif",

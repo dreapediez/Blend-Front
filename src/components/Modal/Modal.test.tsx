@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../redux/store";
+import { mockStore } from "../../mocks/makeWrapper";
 import Modal from "./Modal";
 
-const dispatchSpy = jest.spyOn(store, "dispatch");
+const dispatchSpy = jest.spyOn(mockStore, "dispatch");
 
 describe("Given a Modal component", () => {
   describe("When it's rendered with the type 'error' and the text 'Something went wrong, please try again in a few minutes', and click the button", () => {
@@ -16,7 +16,7 @@ describe("Given a Modal component", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <Modal type={expectedModalType} text={expectedModalText} />
           </Provider>
         </BrowserRouter>
@@ -39,7 +39,7 @@ describe("Given a Modal component", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <Modal type={expectedModalType} text={expectedModalText} />
           </Provider>
         </BrowserRouter>

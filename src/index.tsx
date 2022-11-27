@@ -4,16 +4,18 @@ import { Provider } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import { store } from "./redux/store";
 import MainStyle from "./styles/MainStyle";
 import { BrowserRouter } from "react-router-dom";
+import "@fontsource/roboto";
+import "@fontsource/poppins";
+import { newStore } from "./redux/store";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={newStore}>
       <BrowserRouter>
         <MainStyle />
         <App />

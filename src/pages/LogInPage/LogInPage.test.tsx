@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../redux/store";
+import { mockStore } from "../../mocks/makeWrapper";
 import LogInPage from "./LogInPage";
 
 describe("Given a log in page", () => {
@@ -16,7 +16,7 @@ describe("Given a log in page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <LogInPage />
           </Provider>
         </BrowserRouter>
@@ -48,7 +48,7 @@ describe("Given a log in page", () => {
 
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <LogInPage />
           </Provider>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
 import useUser from "../../hooks/useUser/useUser";
@@ -7,6 +7,7 @@ import FormStyled from "../../styles/FormStyled";
 
 const RegisterPage = (): JSX.Element => {
   const { registerUser } = useUser();
+  const navigate = useNavigate();
 
   const initialRegisterState = {
     username: "",
@@ -27,6 +28,7 @@ const RegisterPage = (): JSX.Element => {
     event.preventDefault();
 
     await registerUser(formData);
+    navigate("/calendar");
   };
   return (
     <FormStyled>

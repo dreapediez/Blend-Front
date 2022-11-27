@@ -10,5 +10,14 @@ export interface UserRegisterCredentials extends UserCredentials {
 export interface User {
   id: string;
   username: string;
+}
+
+export interface UserState extends User {
+  isLogged: boolean;
+}
+
+export interface JwtPayloadCustom {
+  id: string;
+  username: string;
   email: string;
 }
