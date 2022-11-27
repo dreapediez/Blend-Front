@@ -4,13 +4,13 @@ import MainStyle from "../styles/MainStyle";
 import { UiState } from "../types/modalTypes";
 import { UserState } from "../types/userTypes";
 
-const currentUser: UserState = {
+export const currentUser: UserState = {
   id: "637fb68183264e08d89177ed",
   username: "Melendi",
   isLogged: true,
 };
 
-const currentUi: UiState = {
+export const currentUi: UiState = {
   isLoading: false,
   modal: {
     isError: true,
@@ -19,7 +19,7 @@ const currentUi: UiState = {
   },
 };
 
-const currentUiLoading: UiState = {
+export const currentUiLoading: UiState = {
   isLoading: true,
   modal: {
     isError: false,
