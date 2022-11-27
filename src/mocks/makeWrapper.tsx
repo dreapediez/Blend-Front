@@ -1,4 +1,5 @@
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../redux/store";
 import MainStyle from "../styles/MainStyle";
 import { UiState } from "../types/modalTypes";
@@ -38,19 +39,6 @@ export const mockStoreLoading = store({
   ui: currentUiLoading,
 });
 
-export const makeWrapper = ({
-  children,
-}: {
-  children: JSX.Element | JSX.Element[];
-}) => {
-  return (
-    <>
-      <MainStyle />
-      <Provider store={store()}>{children}</Provider>
-    </>
-  );
-};
-
 export const makeWrapperMockStore = ({
   children,
 }: {
@@ -58,21 +46,10 @@ export const makeWrapperMockStore = ({
 }) => {
   return (
     <>
-      <MainStyle />
-      <Provider store={mockStore}>{children}</Provider>
-    </>
-  );
-};
-
-export const makeWrapperMockStoreLoading = ({
-  children,
-}: {
-  children: JSX.Element | JSX.Element[];
-}) => {
-  return (
-    <>
-      <MainStyle />
-      <Provider store={mockStoreLoading}>{children}</Provider>
+      <BrowserRouter>
+        <MainStyle />
+        <Provider store={mockStore}>{children}</Provider>
+      </BrowserRouter>
     </>
   );
 };

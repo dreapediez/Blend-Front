@@ -15,9 +15,10 @@ describe("Given a useToken hook", () => {
       });
 
       await act(() => {
-        Object.defineProperty(window.sessionStorage, "getItem", {
+        Object.defineProperty(window.localStorage, "getItem", {
           value: null,
         });
+
         current.getToken();
       });
 
@@ -25,62 +26,66 @@ describe("Given a useToken hook", () => {
         expect(spyDispatch).toHaveBeenCalled();
       });
     });
+  });
 
-    describe("When it's function getToken is called without user data but with token", () => {
-      test("And then it should call dispatch function removeUserActionCreator", async () => {
-        const {
-          result: { current },
-        } = renderHook(() => useToken(), {
-          wrapper: makeWrapperMockStore,
+  describe("When it's function getToken is called without user data but with token", () => {
+    test("And then it should call dispatch function removeUserActionCreator", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useToken(), {
+        wrapper: makeWrapperMockStore,
+      });
+
+      await act(() => {
+        // current.removeToken();
+
+        Object.defineProperty(window.localStorage, "getItem", {
+          value: mockToken,
         });
 
-        await act(() => {
-          current.loadToken(mockToken);
-          Object.defineProperty(window.sessionStorage, "getItem", {
-            value: mockToken,
-          });
-          current.getToken();
-        });
+        window.localStorage.clear();
 
-        await waitFor(() => {
-          expect(spyDispatch).toHaveBeenCalled();
-        });
+        current.getToken();
+      });
+
+      await waitFor(() => {
+        expect(spyDispatch).toHaveBeenCalled();
       });
     });
+  });
 
-    describe("When it's function loadToken is called with a specific token parameters", () => {
-      test("Then it should call dispatch function loadTokenActionCreator", async () => {
-        const {
-          result: { current },
-        } = renderHook(() => useToken(), {
-          wrapper: makeWrapperMockStore,
-        });
+  describe("When it's function loadToken is called with a specific token parameters", () => {
+    test("Then it should call dispatch function loadTokenActionCreator", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useToken(), {
+        wrapper: makeWrapperMockStore,
+      });
 
-        await act(() => {
-          current.loadToken(mockToken);
-        });
+      await act(() => {
+        current.loadToken(mockToken);
+      });
 
-        await waitFor(() => {
-          expect(spyDispatch).toHaveBeenCalled();
-        });
+      await waitFor(() => {
+        expect(spyDispatch).toHaveBeenCalled();
       });
     });
+  });
 
-    describe("When it's function loadToken is called with an empty token parameters", () => {
-      test("Then it should call dispatch function loadTokenActionCreator", async () => {
-        const {
-          result: { current },
-        } = renderHook(() => useToken(), {
-          wrapper: makeWrapperMockStore,
-        });
+  describe("When it's function loadToken is called with an empty token parameters", () => {
+    test("Then it should call dispatch function loadTokenActionCreator", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useToken(), {
+        wrapper: makeWrapperMockStore,
+      });
 
-        await act(() => {
-          current.loadToken("");
-        });
+      await act(() => {
+        current.loadToken("");
+      });
 
-        await waitFor(() => {
-          expect(spyDispatch).toHaveBeenCalled();
-        });
+      await waitFor(() => {
+        expect(spyDispatch).toHaveBeenCalled();
       });
     });
   });

@@ -14,13 +14,13 @@ interface UseTokenStructure {
 }
 
 const useToken = (): UseTokenStructure => {
-  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   const loadToken = useCallback(
     (token: string): void => {
       try {
-        localStorage.setItem("token", token);
+        window.localStorage.setItem("token", token);
 
         const userData: JwtPayloadCustom = decodeToken(token);
 
@@ -37,14 +37,8 @@ const useToken = (): UseTokenStructure => {
     [dispatch]
   );
 
-  const removeToken = useCallback((): void => {
-    localStorage.removeItem("token");
-
-    dispatch(removeUserActionCreator());
-  }, [dispatch]);
-
   const getToken = (): string | null => {
-    const token = localStorage.getItem("token");
+    const token = window.localStorage.getItem("token");
 
     if (user.isLogged && !token) {
       removeToken();
@@ -58,6 +52,12 @@ const useToken = (): UseTokenStructure => {
 
     return token;
   };
+
+  const removeToken = useCallback((): void => {
+    window.localStorage.removeItem("token");
+
+    dispatch(removeUserActionCreator());
+  }, [dispatch]);
 
   return { getToken, removeToken, loadToken };
 };
