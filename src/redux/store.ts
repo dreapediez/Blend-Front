@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { uiReducer, uiInitialState } from "./features/uiSlice/uiSlice";
-import { userReducer, userInitialState } from "./features/userSlice/userSlice";
+import { uiInitialState, uiReducer } from "./features/uiSlice/uiSlice";
+import { userInitialState, userReducer } from "./features/userSlice/userSlice";
 
 const preloadedState = {
   ui: uiInitialState,
