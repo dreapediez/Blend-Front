@@ -7,7 +7,7 @@ import { ReactComponent as Three } from "../../assets/three.svg";
 const Loading = (): JSX.Element => {
   return (
     <LoadingStyled>
-      <div className="loading">
+      <div className="loading" data-testid="loading">
         <div className="loading__lines">
           <One width="20" height="25" className="loading__lines-one" />
           <Two width="20" height="30" className="loading__lines-two" />
