@@ -25,8 +25,8 @@ const lightButton = css`
   height: 55px;
   border: 2px solid ${mainStyleColors.accentColor};
   &:hover {
-    background-color: ${mainStyleColors.neutralColorHover};
-    border: 2px solid ${mainStyleColors.neutralColorHover};
+    background-color: ${mainStyleColors.accentColorHover};
+    border: 2px solid ${mainStyleColors.accentColorHover};
     color: ${mainStyleColors.neutralColor};
   }
 `;
@@ -47,7 +47,7 @@ const lightSmallButton = css`
   height: 75px;
   border: 2px solid ${mainStyleColors.accentColor};
   &:hover {
-    background-color: ${mainStyleColors.neutralColorHover};
+    background-color: ${mainStyleColors.accentColorHover};
     border: none;
     color: ${mainStyleColors.neutralColor};
   }

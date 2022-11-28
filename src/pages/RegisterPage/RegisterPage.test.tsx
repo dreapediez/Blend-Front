@@ -1,9 +1,18 @@
-import { render, screen } from "@testing-library/react";
+import {
+  act,
+  render,
+  renderHook,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { mockStore } from "../../mocks/makeWrapper";
+import useToken from "../../hooks/useToken/useToken";
+import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
 import RegisterPage from "./RegisterPage";
+
+const spyDispatch = jest.spyOn(mockStore, "dispatch");
 
 describe("Given a register page", () => {
   const usernameInput = /username/i;
@@ -43,19 +52,19 @@ describe("Given a register page", () => {
 
   describe("When it's rendered with the types username 'User', password 'user123' and email 'user@gmail.com'", () => {
     test("Then it should show the typed values on the screen", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useToken(), {
+        wrapper: makeWrapperMockStore,
+      });
+
       const userInput = {
         username: "User",
         password: "user123",
         email: "user@gmail.com",
       };
 
-      render(
-        <BrowserRouter>
-          <Provider store={mockStore}>
-            <RegisterPage />
-          </Provider>
-        </BrowserRouter>
-      );
+      render(<RegisterPage />, { wrapper: makeWrapperMockStore });
 
       const username = screen.queryByRole("textbox", { name: usernameInput });
       const password = screen.queryByLabelText(passwordInput);
@@ -68,11 +77,18 @@ describe("Given a register page", () => {
       await userEvent.type(password!, userInput.password);
       await userEvent.type(email!, userInput.email);
       await userEvent.click(renderedButton);
+      await act(() => {
+        current.getToken();
+      });
 
       expect(username).toHaveDisplayValue(userInput.username);
       expect(password).toHaveDisplayValue(userInput.password);
       expect(email).toHaveDisplayValue(userInput.email);
       expect(renderedButton).toBeInTheDocument();
+
+      await waitFor(() => {
+        expect(spyDispatch).toHaveBeenCalled();
+      });
     });
   });
 });
