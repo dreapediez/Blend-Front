@@ -34,6 +34,16 @@ const uiSlice = createSlice({
         showModal: false,
       },
     }),
+
+    showLoading: (currentUiState) => ({
+      ...currentUiState,
+      isLoading: true,
+    }),
+
+    hideLoading: (currentUiState) => ({
+      ...currentUiState,
+      isLoading: false,
+    }),
   },
 });
 

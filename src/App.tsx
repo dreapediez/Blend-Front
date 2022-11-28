@@ -12,6 +12,7 @@ import Loading from "./components/Loading/Loading";
 const App = () => {
   const { pathname } = useLocation();
   const {
+    isLoading,
     modal: { modalText, isError, showModal },
   } = useAppSelector((action) => action.ui);
 
@@ -24,10 +25,10 @@ const App = () => {
         <Route path="/login" element={<LogInPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      {isLoading && <Loading />}
       {showModal && (
         <Modal type={isError ? "error" : "success"} text={modalText} />
       )}
-      <Loading />
     </AppStyled>
   );
 };
