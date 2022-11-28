@@ -7,6 +7,7 @@ import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./redux/hooks";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Loading from "./components/Loading/Loading";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ const App = () => {
       {showModal && (
         <Modal type={isError ? "error" : "success"} text={modalText} />
       )}
+      <Loading />
     </AppStyled>
   );
 };
