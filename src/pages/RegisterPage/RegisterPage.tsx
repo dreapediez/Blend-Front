@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
+import useToken from "../../hooks/useToken/useToken";
 import useUser from "../../hooks/useUser/useUser";
 import FormStyled from "../../styles/FormStyled";
+import { UserRegisterCredentials } from "../../types/userTypes";
 
 const RegisterPage = (): JSX.Element => {
   const { registerUser } = useUser();
+  const { getToken } = useToken();
   const navigate = useNavigate();
 
   const initialRegisterState = {
@@ -27,8 +30,19 @@ const RegisterPage = (): JSX.Element => {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    await registerUser(formData);
-    navigate("/calendar");
+    const userTokenSubmit: UserRegisterCredentials = {
+      username: formData.username,
+      password: formData.password,
+      email: formData.email,
+    };
+
+    await registerUser(userTokenSubmit);
+
+    const token = getToken();
+
+    if (token) {
+      navigate("/calendar");
+    }
   };
   return (
     <FormStyled>

@@ -10,7 +10,6 @@ const mainStyleColors = {
   secondaryColor: "#A04063",
 
   accentColorHover: "#A04063",
-  neutralColorHover: "#A04063",
 };
 
 export default mainStyleColors;
