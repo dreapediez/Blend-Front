@@ -9,6 +9,13 @@ const windowSlice = createSlice({
   name: "windows",
   initialState: windowsInitialState,
   reducers: {
+    loadWindows: (
+      currentWindowState,
+      action: PayloadAction<WindowStructure[]>
+    ): WindowState => ({
+      ...currentWindowState,
+      list: [...action.payload],
+    }),
     loadWindow: (
       currentWindowState,
       action: PayloadAction<WindowStructure>
@@ -21,4 +28,7 @@ const windowSlice = createSlice({
 
 export const windowReducer = windowSlice.reducer;
 
-export const { loadWindow: loadWindowActionCreator } = windowSlice.actions;
+export const {
+  loadWindow: loadWindowActionCreator,
+  loadWindows: loadWindowsActionCreator,
+} = windowSlice.actions;
