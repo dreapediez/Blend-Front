@@ -6,11 +6,11 @@ const WindowStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 350px;
+  width: 340px;
   height: 100%;
   border: 2px solid #000;
   border-radius: 4px;
-  padding: 18px;
+  padding: 25px;
   margin: 0 auto;
 
   .title {
@@ -43,7 +43,7 @@ const WindowStyled = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 25px;
-    width: 310px;
+    width: 285px;
     justify-content: space-between;
     &__box {
       display: flex;
