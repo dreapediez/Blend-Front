@@ -1,5 +1,6 @@
 export interface CalendarStructure {
-  // userId: Types.ObjectId;
+  userId: string;
+  isActive: boolean;
   createdAt?: string;
   windows: WindowStructure[];
 }
@@ -9,6 +10,7 @@ export interface WindowState {
 }
 
 export interface WindowStructure {
+  isOpen: boolean;
   title: string;
   teaType: string;
   brewed: string;
@@ -26,4 +28,8 @@ export interface PostStructure {
   image: string;
   imageBackup?: string;
   createdAt?: string;
+}
+
+export interface WindowApi {
+  windows: WindowStructure[];
 }
