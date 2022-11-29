@@ -8,6 +8,7 @@ import { useAppSelector } from "./redux/hooks";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Loading from "./components/Loading/Loading";
+import CalendarPage from "./pages/ClaendarPage/CalendarPager";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -18,11 +19,12 @@ const App = () => {
 
   return (
     <AppStyled>
-      {["/register", "/login"].includes(pathname) && <Header />}
+      {["/register", "/login", "/calendar"].includes(pathname) && <Header />}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LogInPage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {isLoading && <Loading />}
