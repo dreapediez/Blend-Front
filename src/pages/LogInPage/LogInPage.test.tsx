@@ -6,8 +6,6 @@ import {
   waitFor,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import useToken from "../../hooks/useToken/useToken";
 import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
 import LogInPage from "./LogInPage";
@@ -20,25 +18,20 @@ describe("Given a log in page", () => {
   const buttonText = /log in/i;
 
   describe("When it's rendered with the title 'Welcome to Blendcommunity!' and three inputs", () => {
-    test("Then it should show the text received as a title and the corresponding three inputs", () => {
+    test("Then it should show the text received as a title and the corresponding three inputs", async () => {
       const expectedTitleText = "Welcome to Blendcommunity!";
 
-      render(
-        <BrowserRouter>
-          <Provider store={mockStore}>
-            <LogInPage />
-          </Provider>
-        </BrowserRouter>
-      );
+      render(<LogInPage />, { wrapper: makeWrapperMockStore });
 
       const title = screen.queryByRole("heading", {
         name: expectedTitleText,
       });
-      const username = screen.getByPlaceholderText(usernameInput);
-      const password = screen.getByPlaceholderText(passwordInput);
+      const username = screen.queryByPlaceholderText(usernameInput);
+      const password = screen.queryByPlaceholderText(passwordInput);
       const renderedButton = screen.queryByRole("button", {
         name: buttonText,
       }) as HTMLButtonElement;
+      await userEvent.click(renderedButton);
 
       expect(title).toBeInTheDocument();
       expect(username).toBeInTheDocument();
