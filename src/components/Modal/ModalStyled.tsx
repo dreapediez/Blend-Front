@@ -52,6 +52,7 @@ const ModalStyled = styled.div<ModalStyledProps>`
       height: 70px;
       top: -15px;
       right: -15px;
+      cursor: pointer;
     }
   }
 `;
