@@ -1,4 +1,4 @@
-import { WindowStructure } from "../../types/caledarTypes";
+import { WindowStructure } from "../../types/calendarTypes";
 
 const windows: WindowStructure[] = [
   {

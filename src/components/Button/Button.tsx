@@ -30,9 +30,15 @@ const Button = ({
           onClick={action}
         >
           <span className="box">
-            {name === "post" && <BsPlusCircle className="icon" width="100" />}
-            {name === "delete" && <FaRegTrashAlt className="icon" />}
-            {name === "modify" && <HiOutlinePencilAlt className="icon" />}
+            {name === "post" && (
+              <BsPlusCircle className="icon" width="100" data-testid="plus" />
+            )}
+            {name === "delete" && (
+              <FaRegTrashAlt className="icon" data-testid="trash" />
+            )}
+            {name === "modify" && (
+              <HiOutlinePencilAlt className="icon" data-testid="modify" />
+            )}
             {text}
           </span>
         </ButtonStyled>
