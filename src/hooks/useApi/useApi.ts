@@ -1,5 +1,7 @@
+import axios, { AxiosError } from "axios";
 import { useCallback } from "react";
 import { loadAllPostsActionCreator } from "../../redux/features/postSlice/postSlice";
+import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { PostStructure } from "../../types/postsTypes";
 
@@ -9,14 +11,19 @@ const useApi = () => {
 
   const loadAllPosts = useCallback(async () => {
     try {
-      const response = await fetch(`${url}calendar`);
-      if (response.status !== 200) {
-        throw new Error("No data found");
-      }
-      const apiResponse: PostStructure[] = await response.json();
+      const response = await axios.post(`${url}/posts`);
+
+      const apiResponse: PostStructure[] = response.data;
       dispatch(loadAllPostsActionCreator(apiResponse));
     } catch (error: unknown) {
-      throw new Error(`There was an error: ${(error as Error).message}`);
+      if ((error as AxiosError).isAxiosError) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modalText: `Something went wrong, please try again in a few minutes`,
+          })
+        );
+      }
     }
   }, [dispatch, url]);
 
