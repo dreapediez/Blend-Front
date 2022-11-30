@@ -52,14 +52,14 @@ const RegisterPage = (): JSX.Element => {
           <FormInput
             placeholder="Username"
             type="text"
-            name="username"
+            name="register-username"
             required={true}
             action={handleFormValues}
           />
           <FormInput
             placeholder="Password"
             type="password"
-            name="password"
+            name="register-password"
             required={true}
             action={handleFormValues}
           />

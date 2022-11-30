@@ -21,7 +21,9 @@ const FormInput = ({
     <FormInputStyled>
       <span className="form__box">
         {name === "username" && <FiUser className="form__icon" />}
+        {name === "register-username" && <FiUser className="form__icon" />}
         {name === "password" && <FiLock className="form__icon" />}
+        {name === "register-password" && <FiLock className="form__icon" />}
         {name === "email" && <FiMail className="form__icon" />}
         {name === "image" && <FiImage className="form__icon" />}
       </span>
@@ -36,12 +38,12 @@ const FormInput = ({
           required={required}
           aria-label={name}
         />
-        {name === "username" && (
+        {name === "register-username" && (
           <span className="tiptext">
             Hi TeaMate! <br /> Username must be at least 5 characters
           </span>
         )}
-        {name === "password" && (
+        {name === "register-password" && (
           <span className="tiptext">
             Password must be at least 8 characters
           </span>
