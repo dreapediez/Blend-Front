@@ -1,6 +1,9 @@
 import axios, { AxiosError } from "axios";
 import { useCallback } from "react";
-import { loadAllPostsActionCreator } from "../../redux/features/postSlice/postSlice";
+import {
+  loadAllPostsActionCreator,
+  loadOnePostActionCreator,
+} from "../../redux/features/postSlice/postSlice";
 import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { PostStructure } from "../../types/postsTypes";
@@ -27,7 +30,17 @@ const useApi = () => {
     }
   }, [dispatch, url]);
 
-  return { loadAllPosts };
+  const loadOnePost = useCallback(
+    async (day: string) => {
+      const response = await axios.post(`${url}/posts/post/${day}`);
+      const apiResponse = await response.data;
+
+      dispatch(loadOnePostActionCreator(apiResponse));
+    },
+    [dispatch, url]
+  );
+
+  return { loadAllPosts, loadOnePost };
 };
 
 export default useApi;
