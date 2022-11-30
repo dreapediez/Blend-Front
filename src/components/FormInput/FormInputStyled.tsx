@@ -47,6 +47,7 @@ const FormInputStyled = styled.label`
   .tooltip .tiptext {
     visibility: hidden;
     position: absolute;
+    transform: translateX(-60%);
     width: 200px;
     background-color: ${mainStyleColors.secondaryColor};
     color: ${mainStyleColors.neutralColor};
