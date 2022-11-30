@@ -13,8 +13,8 @@ const RegisterPage = (): JSX.Element => {
   const navigate = useNavigate();
 
   const initialRegisterState = {
-    username: "",
-    password: "",
+    register_username: "",
+    register_password: "",
     email: "",
   };
 
@@ -31,8 +31,8 @@ const RegisterPage = (): JSX.Element => {
     event.preventDefault();
 
     const userTokenSubmit: UserRegisterCredentials = {
-      username: formData.username,
-      password: formData.password,
+      username: formData.register_username,
+      password: formData.register_password,
       email: formData.email,
     };
 
@@ -52,14 +52,14 @@ const RegisterPage = (): JSX.Element => {
           <FormInput
             placeholder="Username"
             type="text"
-            name="register-username"
+            name="register_username"
             required={true}
             action={handleFormValues}
           />
           <FormInput
             placeholder="Password"
             type="password"
-            name="register-password"
+            name="register_password"
             required={true}
             action={handleFormValues}
           />
