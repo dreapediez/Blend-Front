@@ -1,21 +1,25 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { postInitialState, postReducer } from "./features/postSlice/postSlice";
 import { uiInitialState, uiReducer } from "./features/uiSlice/uiSlice";
 import { userInitialState, userReducer } from "./features/userSlice/userSlice";
 
 const preloadedState = {
   ui: uiInitialState,
   user: userInitialState,
+  post: postInitialState,
 };
 
-export const store = ({ user, ui } = preloadedState) =>
+export const store = ({ user, ui, post } = preloadedState) =>
   configureStore({
     preloadedState: {
       user,
       ui,
+      post,
     },
     reducer: {
       user: userReducer,
       ui: uiReducer,
+      post: postReducer,
     },
   });
 

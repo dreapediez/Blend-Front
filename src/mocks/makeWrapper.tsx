@@ -4,6 +4,7 @@ import { newStore, store } from "../redux/store";
 import MainStyle from "../styles/MainStyle";
 import { UiState } from "../types/modalTypes";
 import { UserState } from "../types/userTypes";
+import { listOfPostsMock } from "./listOfPostsMock";
 
 export const currentUser: UserState = {
   id: "637fb68183264e08d89177ed",
@@ -32,11 +33,13 @@ export const currentUiLoading: UiState = {
 export const mockStore = store({
   user: currentUser,
   ui: currentUi,
+  post: { list: listOfPostsMock },
 });
 
 export const mockStoreLoading = store({
   user: currentUser,
   ui: currentUiLoading,
+  post: { list: listOfPostsMock },
 });
 
 export const makeWrapper = ({
