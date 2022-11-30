@@ -71,7 +71,6 @@ const styledAsButton = css<ButtonStyledProps>`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90px;
     margin-left: 5px;
     gap: 5px;
   }
