@@ -20,9 +20,12 @@ const useUser = () => {
   const registerUser = async (userData: UserRegisterCredentials) => {
     try {
       dispatch(showLoadingActionCreator());
-      await axios.post(`${url}/users/register`, userData);
+      const responseData = await axios.post(`${url}/users/register`, userData);
 
-      dispatch(hideLoadingActionCreator());
+      const { accessToken: token } = responseData.data;
+
+      loadToken(token);
+
       dispatch(
         showModalActionCreator({
           isError: false,
@@ -45,6 +48,8 @@ const useUser = () => {
           })
         );
       }
+    } finally {
+      dispatch(hideLoadingActionCreator());
     }
   };
 
@@ -57,7 +62,6 @@ const useUser = () => {
 
       loadToken(token);
 
-      dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({
           isError: false,
@@ -65,13 +69,14 @@ const useUser = () => {
         })
       );
     } catch (error: unknown) {
-      dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({
           isError: true,
           modalText: `Something went wrong, please try again in a few minutes`,
         })
       );
+    } finally {
+      dispatch(hideLoadingActionCreator());
     }
   };
   const logoutUser = () => {
