@@ -77,8 +77,6 @@ const useUser = () => {
   };
   const logoutUser = () => {
     removeToken();
-
-    dispatch(removeUserActionCreator());
   };
 
   return { registerUser, logoutUser, loginUser };
