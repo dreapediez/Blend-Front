@@ -3,8 +3,6 @@ import { makeWrapper, makeWrapperMockStore } from "../../mocks/makeWrapper";
 import mockToken from "../../mocks/mockToken";
 import useToken from "./useToken";
 
-// const spyDispatch = jest.spyOn(mockStore, "dispatch");
-
 const mockDispatch = jest.fn();
 
 jest.mock("react-redux", () => ({
