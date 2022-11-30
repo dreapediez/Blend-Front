@@ -11,6 +11,7 @@ interface ButtonStyledProps {
 const darkButton = css`
   background-color: ${mainStyleColors.accentColor};
   color: ${mainStyleColors.textLightColor};
+  font-size: ${mainStyleFonts.mediumFontSize};
   width: 320px;
   height: 55px;
   border: none;
@@ -21,6 +22,7 @@ const darkButton = css`
 const lightButton = css`
   background-color: ${mainStyleColors.neutralColor};
   color: ${mainStyleColors.accentColor};
+  font-size: ${mainStyleFonts.mediumFontSize};
   width: 320px;
   height: 55px;
   border: 2px solid ${mainStyleColors.accentColor};
@@ -32,6 +34,7 @@ const lightButton = css`
 `;
 const darkSmallButton = css`
   background-color: ${mainStyleColors.accentColor};
+  font-size: ${mainStyleFonts.smallFontSize};
   color: ${mainStyleColors.textLightColor};
   width: 100px;
   height: 75px;
@@ -42,6 +45,7 @@ const darkSmallButton = css`
 `;
 const lightSmallButton = css`
   background-color: ${mainStyleColors.neutralColor};
+  font-size: ${mainStyleFonts.smallFontSize};
   color: ${mainStyleColors.accentColor};
   width: 100px;
   height: 75px;
@@ -59,10 +63,21 @@ const styledAsButton = css<ButtonStyledProps>`
   border-radius: 4px;
   font-family: ${mainStyleFonts.secondaryFont};
   font-weight: ${mainStyleFonts.mainFontRegular};
-  font-size: ${mainStyleFonts.mediumFontSize};
   text-align: center;
   cursor: pointer;
   outline: none;
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    margin-left: 5px;
+    gap: 5px;
+  }
+  .icon {
+    font-size: ${mainStyleFonts.superFontSize};
+  }
   ${({ styletype }) => styletype === "dark" && darkButton}
   ${({ styletype }) => styletype === "light" && lightButton}
   ${({ styletype }) => styletype === "darkSmall" && darkSmallButton}
