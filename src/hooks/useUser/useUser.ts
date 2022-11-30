@@ -6,19 +6,15 @@ import {
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
 import {
-  AxiosResponseBody,
   UserCredentials,
   UserRegisterCredentials,
 } from "../../types/userTypes";
 import useToken from "../useToken/useToken";
-import { useNavigate } from "react-router-dom";
 import { removeUserActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const useUser = () => {
-  const { loadToken } = useToken();
   const dispatch = useAppDispatch();
-  const { getToken, removeToken } = useToken();
-  const navigate = useNavigate();
+  const { removeToken, loadToken } = useToken();
 
   const url = process.env.REACT_APP_API_URL!;
 
@@ -34,18 +30,12 @@ const useUser = () => {
           modalText: `You are now a new member of Blendcommunity`,
         })
       );
-      const token = getToken();
-
-      if (token) {
-        navigate("/calendar");
-      }
     } catch (error: unknown) {
       if ((error as AxiosError).isAxiosError) {
         dispatch(
           showModalActionCreator({
             isError: true,
-            modalText: "",
-            // `Wrong credentials, please try again. Tea time is waiting`,
+            modalText: `Wrong credentials, please try again. Tea time is waiting`,
           })
         );
       } else {
