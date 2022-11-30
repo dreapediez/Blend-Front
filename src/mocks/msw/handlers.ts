@@ -1,6 +1,6 @@
 import { rest } from "msw";
 import apiMock from "../apiMock";
-import { listOfPostsMock } from "../listOfPostsMock";
+import { listOfPostsMock, postMock } from "../listOfPostsMock";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -13,10 +13,14 @@ export const handlers = [
     return response(context.status(200), context.json({ user: apiMock }));
   }),
 
-  rest.post(`${apiUrl}/posts`, (request, response, context) => {
+  rest.get(`${apiUrl}/posts`, (request, response, context) => {
     return response(
       context.status(200),
       context.json({ posts: listOfPostsMock })
     );
+  }),
+
+  rest.get(`${apiUrl}/posts/post/1`, (request, response, context) => {
+    return response(context.status(200), context.json({ posts: postMock }));
   }),
 ];

@@ -14,12 +14,29 @@ const useApi = () => {
 
   const loadAllPosts = useCallback(async () => {
     try {
-      const response = await axios.post(`${url}/posts`);
+      const response = await axios.get(`${url}/posts`);
 
       const apiResponse: PostStructure[] = response.data;
       dispatch(loadAllPostsActionCreator(apiResponse));
     } catch (error: unknown) {
-      if ((error as AxiosError).isAxiosError) {
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          modalText: `Something went wrong, please try again in a few minutes`,
+        })
+      );
+    }
+  }, [dispatch, url]);
+
+  const loadOnePost = useCallback(
+    async (day: string) => {
+      try {
+        const response = await axios.get(`${url}/posts/post/${day}`);
+
+        const apiResponse: PostStructure = response.data;
+
+        dispatch(loadOnePostActionCreator(apiResponse));
+      } catch (error: unknown) {
         dispatch(
           showModalActionCreator({
             isError: true,
@@ -27,15 +44,6 @@ const useApi = () => {
           })
         );
       }
-    }
-  }, [dispatch, url]);
-
-  const loadOnePost = useCallback(
-    async (day: string) => {
-      const response = await axios.post(`${url}/posts/post/${day}`);
-      const apiResponse = await response.data;
-
-      dispatch(loadOnePostActionCreator(apiResponse));
     },
     [dispatch, url]
   );
