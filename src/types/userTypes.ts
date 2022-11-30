@@ -21,3 +21,7 @@ export interface JwtPayloadCustom {
   username: string;
   email: string;
 }
+
+export interface AxiosResponseBody {
+  error: string;
+}

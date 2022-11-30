@@ -35,9 +35,9 @@ describe("Given a register page", () => {
       const title = screen.queryByRole("heading", {
         name: expectedTitleText,
       });
-      const username = screen.getByPlaceholderText(usernameInput);
-      const password = screen.getByPlaceholderText(passwordInput);
-      const email = screen.getByPlaceholderText(emailInput);
+      const username = screen.queryByPlaceholderText(usernameInput);
+      const password = screen.queryByPlaceholderText(passwordInput);
+      const email = screen.queryByPlaceholderText(emailInput);
       const renderedButton = screen.queryByRole("button", {
         name: buttonText,
       }) as HTMLButtonElement;

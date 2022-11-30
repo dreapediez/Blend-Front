@@ -13,6 +13,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "axios": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
@@ -57,6 +58,12 @@
       "!src/setupTests.ts",
       "!src/react-app-env.d.ts",
       "!src/reportWebVitals.ts"
+    ],
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)/"
     ]
   },
   "devDependencies": {
