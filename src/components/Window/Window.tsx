@@ -2,7 +2,7 @@ import WindowStyled from "./WindowStyled";
 import { ReactComponent as Time } from "../../assets/time.svg";
 import { ReactComponent as Temperature } from "../../assets/mini-mug.svg";
 import Button from "../Button/Button";
-import { WindowStructure } from "../../types/caledarTypes";
+import { WindowStructure } from "../../types/calendarTypes";
 
 interface WindowProps extends WindowStructure {}
 

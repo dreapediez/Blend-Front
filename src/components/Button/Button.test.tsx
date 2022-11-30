@@ -45,7 +45,7 @@ describe("Given a Button component", () => {
       expect(buttonAction).toBeCalled();
     });
 
-    test("And its should show a button with text 'Delete' on click", () => {
+    test("And its should show a button with text 'Delete' on click and a svg data-testid label 'trash'", () => {
       const textButton = "Delete";
       const buttonTypeDarkSmall = "darkSmall";
       const buttonAction = jest.fn();
@@ -56,18 +56,21 @@ describe("Given a Button component", () => {
           styletype={buttonTypeDarkSmall}
           text={textButton}
           action={buttonAction}
+          name="delete"
         />
       );
 
       const button = screen.queryByRole("button");
+      const trash = screen.queryByTestId("trash");
 
       button?.click();
 
       expect(buttonAction).toBeCalled();
+      expect(trash).toBeInTheDocument();
     });
   });
 
-  test("And its should show a button with text 'Delete' on click", () => {
+  test("And its should show a button with text 'Delete' on click and a svg data-testid label 'modify'", () => {
     const textButton = "Modify";
     const buttonTypeLightSmall = "lightSmall";
     const buttonAction = jest.fn();
@@ -78,13 +81,16 @@ describe("Given a Button component", () => {
         styletype={buttonTypeLightSmall}
         text={textButton}
         action={buttonAction}
+        name="modify"
       />
     );
 
     const button = screen.queryByRole("button");
+    const modify = screen.queryByTestId("modify");
 
     button?.click();
 
     expect(buttonAction).toBeCalled();
+    expect(modify).toBeInTheDocument();
   });
 });
