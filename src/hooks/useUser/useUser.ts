@@ -10,7 +10,6 @@ import {
   UserRegisterCredentials,
 } from "../../types/userTypes";
 import useToken from "../useToken/useToken";
-import { removeUserActionCreator } from "../../redux/features/userSlice/userSlice";
 
 const useUser = () => {
   const dispatch = useAppDispatch();
@@ -77,8 +76,6 @@ const useUser = () => {
   };
   const logoutUser = () => {
     removeToken();
-
-    dispatch(removeUserActionCreator());
   };
 
   return { registerUser, logoutUser, loginUser };

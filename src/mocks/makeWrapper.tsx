@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../redux/store";
+import { newStore, store } from "../redux/store";
 import MainStyle from "../styles/MainStyle";
 import { UiState } from "../types/modalTypes";
 import { UserState } from "../types/userTypes";
@@ -38,6 +38,21 @@ export const mockStoreLoading = store({
   user: currentUser,
   ui: currentUiLoading,
 });
+
+export const makeWrapper = ({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[];
+}) => {
+  return (
+    <>
+      <BrowserRouter>
+        <MainStyle />
+        <Provider store={newStore}>{children}</Provider>
+      </BrowserRouter>
+    </>
+  );
+};
 
 export const makeWrapperMockStore = ({
   children,
