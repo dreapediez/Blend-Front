@@ -43,6 +43,25 @@ const FormInputStyled = styled.label`
     transform: translateY(5%);
     color: ${mainStyleColors.neutralColor};
   }
+
+  .tooltip .tiptext {
+    visibility: hidden;
+    position: absolute;
+    width: 200px;
+    background-color: ${mainStyleColors.secondaryColor};
+    color: ${mainStyleColors.neutralColor};
+    text-align: center;
+    border-radius: 4px;
+    padding: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  .tooltip .tiptext::after {
+    border-width: 5px;
+    border-style: solid;
+  }
+  .tooltip:hover .tiptext {
+    visibility: visible;
+  }
 `;
 
 export default FormInputStyled;

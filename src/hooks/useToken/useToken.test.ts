@@ -1,9 +1,14 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
+import { makeWrapper, makeWrapperMockStore } from "../../mocks/makeWrapper";
 import mockToken from "../../mocks/mockToken";
 import useToken from "./useToken";
 
-const spyDispatch = jest.spyOn(mockStore, "dispatch");
+const mockDispatch = jest.fn();
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
 
 describe("Given a useToken hook", () => {
   describe("When it's function getToken is called with user data but without token", () => {
@@ -15,15 +20,13 @@ describe("Given a useToken hook", () => {
       });
 
       await act(() => {
-        Object.defineProperty(window.localStorage, "getItem", {
-          value: null,
-        });
+        window.localStorage.clear();
 
         current.getToken();
       });
 
       await waitFor(() => {
-        expect(spyDispatch).toHaveBeenCalled();
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });
@@ -33,23 +36,17 @@ describe("Given a useToken hook", () => {
       const {
         result: { current },
       } = renderHook(() => useToken(), {
-        wrapper: makeWrapperMockStore,
+        wrapper: makeWrapper,
       });
 
       await act(() => {
-        // current.removeToken();
-
-        Object.defineProperty(window.localStorage, "getItem", {
-          value: mockToken,
-        });
-
-        window.localStorage.clear();
+        window.localStorage.setItem("token", mockToken);
 
         current.getToken();
       });
 
       await waitFor(() => {
-        expect(spyDispatch).toHaveBeenCalled();
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });
@@ -67,7 +64,7 @@ describe("Given a useToken hook", () => {
       });
 
       await waitFor(() => {
-        expect(spyDispatch).toHaveBeenCalled();
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });
@@ -85,7 +82,7 @@ describe("Given a useToken hook", () => {
       });
 
       await waitFor(() => {
-        expect(spyDispatch).toHaveBeenCalled();
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });

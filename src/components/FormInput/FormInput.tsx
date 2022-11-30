@@ -25,16 +25,28 @@ const FormInput = ({
         {name === "email" && <FiMail className="form__icon" />}
         {name === "image" && <FiImage className="form__icon" />}
       </span>
-      <input
-        className="form__input"
-        placeholder={placeholder}
-        type={type}
-        name={name}
-        onChange={action}
-        autoComplete="off"
-        required={required}
-        aria-label={name}
-      />
+      <div className="tooltip">
+        <input
+          className="form__input"
+          placeholder={placeholder}
+          type={type}
+          name={name}
+          onChange={action}
+          autoComplete="off"
+          required={required}
+          aria-label={name}
+        />
+        {name === "username" && (
+          <span className="tiptext">
+            Hi TeaMate! <br /> Username must be at least 5 characters
+          </span>
+        )}
+        {name === "password" && (
+          <span className="tiptext">
+            Password must be at least 8 characters
+          </span>
+        )}
+      </div>
     </FormInputStyled>
   );
 };
