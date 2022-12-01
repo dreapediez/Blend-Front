@@ -13,7 +13,12 @@ const Loading = (): JSX.Element => {
           <Two width="20" height="30" className="loading__lines-two" />
           <Three width="20" height="25" className="loading__lines-three" />
         </div>
-        <Mug width="100" height="60" className="loading__mug" />
+        <Mug
+          width="100"
+          height="60"
+          className="loading__mug"
+          aria-label="loading"
+        />
       </div>
     </LoadingStyled>
   );

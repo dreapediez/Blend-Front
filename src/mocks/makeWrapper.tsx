@@ -21,6 +21,15 @@ export const currentUi: UiState = {
   },
 };
 
+export const currentSuccessUi: UiState = {
+  isLoading: false,
+  modal: {
+    isError: true,
+    showModal: true,
+    modalText: "Success",
+  },
+};
+
 export const currentUiLoading: UiState = {
   isLoading: true,
   modal: {
@@ -33,6 +42,12 @@ export const currentUiLoading: UiState = {
 export const mockStore = store({
   user: currentUser,
   ui: currentUi,
+  post: { list: listOfPostsMock },
+});
+
+export const mockSuccessStore = store({
+  user: currentUser,
+  ui: currentSuccessUi,
   post: { list: listOfPostsMock },
 });
 
