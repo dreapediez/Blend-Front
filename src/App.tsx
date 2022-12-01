@@ -9,6 +9,7 @@ import LogInPage from "./pages/LogInPage/LogInPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Loading from "./components/Loading/Loading";
 import CalendarPage from "./pages/CalendarPage/CalendarPage";
+import PostFormPage from "./pages/PostFormPage/PostFormPage";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -19,12 +20,15 @@ const App = () => {
 
   return (
     <AppStyled>
-      {["/register", "/login", "/calendar"].includes(pathname) && <Header />}
+      {["/register", "/login", "/calendar", "/new-post"].includes(pathname) && (
+        <Header />
+      )}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/new-post" element={<PostFormPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {isLoading && <Loading />}
