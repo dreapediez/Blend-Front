@@ -2,13 +2,13 @@ import App from "./App";
 import { MemoryRouter } from "react-router-dom";
 import TestRenderer from "react-test-renderer";
 import { Provider } from "react-redux";
-import { newStore } from "./redux/store";
 import { render, screen } from "@testing-library/react";
 import {
   mockStore,
   mockStoreLoading,
   mockSuccessStore,
-} from "./mocks/makeWrapper";
+} from "../../mocks/makeWrapper";
+import { newStore } from "../../redux/store";
 
 describe("Given an App component", () => {
   describe("When it's rendered with path '/'", () => {
