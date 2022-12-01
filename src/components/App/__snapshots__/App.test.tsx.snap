@@ -5,7 +5,7 @@ exports[`Given an App component When it's rendered with path '/' Then it should 
   className="sc-bcXHqe eSuVKC"
 >
   <div
-    className="sc-eDvSVe bKUXWg"
+    className="sc-jSUZER cDJIxu"
   >
     <span
       className="snowflake"
@@ -158,7 +158,7 @@ exports[`Given an App component When it's rendered with path '/' Then it should 
       className="snowflake"
     />
     <header
-      className="sc-iBYQkv edKTBx header"
+      className="sc-gswNZR ipXOXK header"
     >
       <a
         href="/"
@@ -175,7 +175,7 @@ exports[`Given an App component When it's rendered with path '/' Then it should 
       </a>
     </header>
     <div
-      className="sc-pyfCe keVxsl"
+      className="sc-jrcTuL fVAcvy"
     >
       <svg
         aria-label="Not page found"
