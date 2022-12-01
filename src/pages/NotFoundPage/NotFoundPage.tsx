@@ -29,8 +29,8 @@ const NotFoundPage = (): JSX.Element => {
       </HeaderStyled>
       <NotFoundPageStyled>
         <Icon
-          width="350"
-          height="350"
+          width="300"
+          height="300"
           aria-label="Not page found"
           data-testid="404-icon"
         />
