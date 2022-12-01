@@ -8,7 +8,7 @@ import { useAppSelector } from "./redux/hooks";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Loading from "./components/Loading/Loading";
-import CalendarPage from "./pages/ClaendarPage/CalendarPage";
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
 
 const App = () => {
   const { pathname } = useLocation();

@@ -43,7 +43,6 @@ const FormInputStyled = styled.label`
     transform: translateY(5%);
     color: ${mainStyleColors.neutralColor};
   }
-
   .tooltip .tiptext {
     visibility: hidden;
     position: absolute;
