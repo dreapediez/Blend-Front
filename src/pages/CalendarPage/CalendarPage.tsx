@@ -4,7 +4,7 @@ import CalendarPageStyled from "./CalendarPageStyled";
 const CalendarPage = (): JSX.Element => {
   const calendarDays: number[] = [];
 
-  for (let i = 0; i <= 24; i++) {
+  for (let i = 0; i < 25; i++) {
     calendarDays.push(i);
   }
 
