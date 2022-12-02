@@ -10,7 +10,6 @@ import "@fontsource/roboto";
 import "@fontsource/poppins";
 import { newStore } from "./redux/store";
 import App from "./components/App/App";
-import ProtectionRoutes from "./components/ProtectionRoutes/ProtectionRoutes";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -20,7 +19,7 @@ root.render(
     <Provider store={newStore}>
       <BrowserRouter>
         <MainStyle />
-        <ProtectionRoutes children={<App />} />
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
