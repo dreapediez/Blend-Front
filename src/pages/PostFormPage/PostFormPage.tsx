@@ -1,51 +1,62 @@
 import FormInput from "../../components/FormInput/FormInput";
-import FormStyled from "../../styles/FormStyled";
+import SimpleFormInput from "../../components/SimpleFormInput/SimpleFormInput";
+import PostFormPageStyled from "./PostFormPageStyled";
 
 const PostFormPage = (): JSX.Element => {
   return (
-    <FormStyled>
-      <form onSubmit={() => {}}>
-        Have you added any ingredient?
-        <FormInput
+    <PostFormPageStyled>
+      <div className="input">
+        <span className="input__text">Have you added any ingredient?</span>
+        <SimpleFormInput
+          className="input__box"
           placeholder=""
           type="text"
           name="answer1"
           required={true}
           action={() => {}}
         />
-        Recommend a song for today’s tea:
-        <FormInput
+      </div>
+      <div className="input">
+        <span className="input__text">Recommend a song for today’s tea:</span>
+        <SimpleFormInput
+          className="input__box"
           placeholder=""
           type="text"
           name="answer2"
           required={true}
           action={() => {}}
         />
-        Recommend a book for today’s tea:
-        <FormInput
+      </div>
+      <div className="input">
+        <span className="input__text">Recommend a book for today’s tea:</span>
+        <SimpleFormInput
+          className="input__box"
           placeholder=""
           type="text"
           name="answer3"
           required={true}
           action={() => {}}
         />
-        How about your tea moment?
-        <FormInput
+      </div>
+      <div className="input">
+        <span className="input__text">How about your tea moment?</span>
+        <SimpleFormInput
+          className="input__box"
           placeholder=""
           type="textarea"
           name="answer4"
           required={true}
           action={() => {}}
         />
-        <FormInput
-          placeholder="Add a picture"
-          type="text"
-          name="image"
-          required={true}
-          action={() => {}}
-        />
-      </form>
-    </FormStyled>
+      </div>
+      <FormInput
+        placeholder="Add a picture"
+        type="text"
+        name="image"
+        required={true}
+        action={() => {}}
+      />
+    </PostFormPageStyled>
   );
 };
 
