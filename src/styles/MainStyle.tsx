@@ -4,6 +4,7 @@ import mainStyleFonts from "./mainStyleFonts";
 
 const MainStyle = createGlobalStyle`
 * {
+  margin: 0;
   box-sizing: border-box;
 }
 

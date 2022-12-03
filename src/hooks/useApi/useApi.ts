@@ -7,17 +7,26 @@ import {
 import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { PostStructure } from "../../types/postsTypes";
+import useToken from "../useToken/useToken";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
   const url = process.env.REACT_APP_API_URL;
+  const { getToken } = useToken();
+  const token = getToken();
 
   const loadAllPosts = useCallback(async () => {
     try {
-      const response = await axios.get(`${url}/posts`);
+      const response = await axios.get(`${url}/posts`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
-      const apiResponse: PostStructure[] = response.data;
-      dispatch(loadAllPostsActionCreator(apiResponse));
+      const apiResponse: {
+        posts: PostStructure[];
+      } = response.data;
+      dispatch(loadAllPostsActionCreator(apiResponse.posts));
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
@@ -26,7 +35,7 @@ const useApi = () => {
         })
       );
     }
-  }, [dispatch, url]);
+  }, [dispatch, token, url]);
 
   const loadOnePost = useCallback(
     async (day: string) => {

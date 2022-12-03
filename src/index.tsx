@@ -1,9 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-
 import reportWebVitals from "./reportWebVitals";
-import "./index.css";
 import MainStyle from "./styles/MainStyle";
 import { BrowserRouter } from "react-router-dom";
 import "@fontsource/roboto";

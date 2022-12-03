@@ -1,5 +1,22 @@
-import styled from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import mainStyleColors from "../../styles/mainStyleColors";
+
+const daysStyle: FlattenSimpleInterpolation[] = [];
+const nameBackgrounds: string[] = ["snow", "pic", "star"];
+
+const randomBackground = () => {
+  const randomIndex = Math.floor(Math.random() * nameBackgrounds.length);
+  return nameBackgrounds[randomIndex];
+};
+
+for (let i = 2; i < 26; i++) {
+  const DayStyle = css`
+    .day:nth-child(${i}) {
+      background-image: url("/assets/${randomBackground()}.png");
+    }
+  `;
+  daysStyle.push(DayStyle);
+}
 
 const CalendarPageStyled = styled.div`
   .days {
@@ -14,6 +31,8 @@ const CalendarPageStyled = styled.div`
     background-color: ${mainStyleColors.neutralColor};
     border: none;
   }
+
+  ${daysStyle.join("\n").replaceAll(",", "")}
 `;
 
 export default CalendarPageStyled;
