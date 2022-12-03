@@ -15,7 +15,7 @@ describe("Given a Calendar Page", () => {
         </BrowserRouter>
       );
 
-      const expectedPostDayOne = screen.getByRole("heading", {
+      const expectedPostDayOne = screen.queryByRole("heading", {
         name: "Pancake Stack",
       });
 
