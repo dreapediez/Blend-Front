@@ -34,6 +34,8 @@ describe("Given an App component", () => {
     test("Then it should render login page with their header component", async () => {
       const headerText = "Welcome to Blendcommunity!";
 
+      localStorage.clear();
+
       render(
         <Provider store={newStore}>
           <MemoryRouter initialEntries={["/login"]}>
@@ -146,6 +148,7 @@ describe("Given an App component", () => {
   describe("When it's render with Loading open", () => {
     test("Then it should render login page with their header component", async () => {
       const informationText = "loading";
+
       render(
         <Provider store={mockStoreLoading}>
           <MemoryRouter initialEntries={["/login"]}>
