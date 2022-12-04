@@ -41,7 +41,7 @@ const PostCard = ({
         <div className="buttons">
           <Button
             type="button"
-            className="form-footer__button"
+            className="buttons__button"
             text="Delete"
             name="delete"
             action={() => deletePost(id)}
@@ -49,7 +49,7 @@ const PostCard = ({
           />
           <Button
             type="button"
-            className="form-footer__button"
+            className="buttons__button"
             text="Modify"
             name="modify"
             styletype="lightSmall"

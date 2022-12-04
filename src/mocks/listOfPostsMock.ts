@@ -31,7 +31,7 @@ export const listOfPostsMock: PostStructure[] = [
   },
 ];
 
-export const postMock: PostStructure = {
+export const postMock = {
   userId: "63849d648dcae285500bac7c",
   day: 1,
   title: "Pancake Stack",
@@ -44,7 +44,7 @@ export const postMock: PostStructure = {
     "https://c.ndtvimg.com/2021-06/2stfrfn8_tea_625x300_16_June_21.jpg?im=FaceCrop,algorithm=dnn,width=620,height=350",
   imageBackup: "",
   createdAt: 28112022,
-  id: "",
+  id: "638b38336f2e824ae4cd3a03",
 };
 
 export const postPropsMock: PostStructure = {
@@ -60,5 +60,5 @@ export const postPropsMock: PostStructure = {
     "https://c.ndtvimg.com/2021-06/2stfrfn8_tea_625x300_16_June_21.jpg?im=FaceCrop,algorithm=dnn,width=620,height=350",
   imageBackup: "",
   createdAt: 28112022,
-  id: "",
+  id: "638b38336f2e824ae4cd3a03",
 };

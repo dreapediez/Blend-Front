@@ -49,11 +49,11 @@ const useApi = () => {
   }, [dispatch, token, url]);
 
   const loadOnePost = useCallback(
-    async (day: string) => {
+    async (idPost: string) => {
       try {
-        const response = await axios.get(`${url}/posts/post/${day}`);
+        const response = await axios.get(`${url}/posts/post/${idPost}`);
 
-        const apiResponse: PostStructure = response.data;
+        const apiResponse = response.data;
 
         dispatch(loadOnePostActionCreator(apiResponse));
       } catch (error: unknown) {
@@ -72,15 +72,13 @@ const useApi = () => {
     async (idPost: string) => {
       try {
         dispatch(showLoadingActionCreator());
-        const response = await axios.delete(`${url}/posts/delete/${idPost}`, {
+        await axios.delete(`${url}/posts/delete/${idPost}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        const apiResponse: PostStructure = response.data;
-
-        dispatch(deletePostActionCreator(apiResponse.id));
+        dispatch(deletePostActionCreator(idPost));
         await loadAllPosts();
         dispatch(hideLoadingActionCreator());
         dispatch(
@@ -98,7 +96,7 @@ const useApi = () => {
         );
       }
     },
-    [dispatch, token, url]
+    [dispatch, loadAllPosts, token, url]
   );
 
   return { loadAllPosts, loadOnePost, deletePost };

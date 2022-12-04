@@ -1,5 +1,6 @@
 import { listOfPostsMock, postMock } from "../../../mocks/listOfPostsMock";
 import {
+  deletePostActionCreator,
   loadAllPostsActionCreator,
   loadOnePostActionCreator,
   postInitialState,
@@ -52,6 +53,28 @@ describe("Given a postReducer", () => {
         };
 
         const newPostState = postReducer(currentPostState, loadPostAction);
+
+        expect(newPostState).toStrictEqual(expectedPostState);
+      });
+    });
+  });
+
+  describe("And its reducer deletePost is invoked", () => {
+    describe("When it receives an initial state and a deletePost action with one post id in this payload", () => {
+      test("Then it should delete the post and return the list with the new state", () => {
+        const deletePostAction = deletePostActionCreator(
+          "638b38336f2e824ae4cd3a03"
+        );
+
+        const currentPostState = {
+          list: [postMock],
+        };
+
+        const expectedPostState = {
+          list: [],
+        };
+
+        const newPostState = postReducer(currentPostState, deletePostAction);
 
         expect(newPostState).toStrictEqual(expectedPostState);
       });
