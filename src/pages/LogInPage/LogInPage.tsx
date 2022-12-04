@@ -38,9 +38,7 @@ const LogInPage = (): JSX.Element => {
 
     const token = getToken();
 
-    if (token) {
-      navigate("/calendar");
-    }
+    token && navigate("/calendar");
   };
 
   return (

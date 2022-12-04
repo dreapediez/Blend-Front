@@ -59,7 +59,7 @@
       "!src/setupTests.ts",
       "!src/react-app-env.d.ts",
       "!src/reportWebVitals.ts",
-      "!src/__snapshots__/*.snap"
+      "!src/**/__snapshots__/*"
     ],
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"

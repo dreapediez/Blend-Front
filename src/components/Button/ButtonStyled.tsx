@@ -14,9 +14,10 @@ const darkButton = css`
   font-size: ${mainStyleFonts.mediumFontSize};
   width: 320px;
   height: 55px;
-  border: none;
+  border: 2px solid ${mainStyleColors.accentColor};
   &:hover {
     background-color: ${mainStyleColors.accentColorHover};
+    border: 2px solid ${mainStyleColors.secondaryColor};
   }
 `;
 const lightButton = css`
@@ -38,9 +39,10 @@ const darkSmallButton = css`
   color: ${mainStyleColors.textLightColor};
   width: 100px;
   height: 75px;
-  border: none;
+  border: 2px solid ${mainStyleColors.accentColor};
   &:hover {
     background-color: ${mainStyleColors.accentColorHover};
+    border: 2px solid ${mainStyleColors.secondaryColor};
   }
 `;
 const lightSmallButton = css`
@@ -50,6 +52,7 @@ const lightSmallButton = css`
   width: 100px;
   height: 75px;
   border: 2px solid ${mainStyleColors.accentColor};
+  font-weight: ${mainStyleFonts.mainFontBold};
   &:hover {
     background-color: ${mainStyleColors.accentColorHover};
     border: none;
@@ -71,7 +74,6 @@ const styledAsButton = css<ButtonStyledProps>`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
     gap: 5px;
   }
   .icon {

@@ -1,17 +1,31 @@
 import AppStyled from "./AppStyled";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
-import Header from "../Header/Header";
-import WelcomePage from "../../pages/WelcomePage/WelcomePage";
 import ProtectionRoutes from "../ProtectionRoutes/ProtectionRoutes";
-import RegisterPage from "../../pages/RegisterPage/RegisterPage";
-import LogInPage from "../../pages/LogInPage/LogInPage";
-import CalendarPage from "../../pages/CalendarPage/CalendarPage";
-import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import Loading from "../Loading/Loading";
-import Modal from "../Modal/Modal";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import useToken from "../../hooks/useToken/useToken";
+import Modal from "../Modal/Modal";
+import Loading from "../Loading/Loading";
+import Header from "../Header/Header";
+
+const WelcomePageComponent = lazy(
+  () => import("../../pages/WelcomePage/WelcomePage")
+);
+const RegisterPageComponent = lazy(
+  () => import("../../pages/RegisterPage/RegisterPage")
+);
+const LogInPagePageComponent = lazy(
+  () => import("../../pages/LogInPage/LogInPage")
+);
+const CalendarPageComponent = lazy(
+  () => import("../../pages/CalendarPage/CalendarPage")
+);
+const PostsPageComponent = lazy(
+  () => import("../../pages/PostsPage/PostsPage")
+);
+const NotFoundPageComponent = lazy(
+  () => import("../../pages/NotFoundPage/NotFoundPage")
+);
 
 const App = () => {
   const { pathname } = useLocation();
@@ -27,26 +41,34 @@ const App = () => {
 
   return (
     <AppStyled>
-      {["/register", "/login", "/calendar"].includes(pathname) && <Header />}
-      <Routes>
-        <Route
-          path="/"
-          element={<ProtectionRoutes children={<WelcomePage />} />}
-        />
-        <Route
-          path="/register"
-          element={<ProtectionRoutes children={<RegisterPage />} />}
-        />
-        <Route
-          path="/login"
-          element={<ProtectionRoutes children={<LogInPage />} />}
-        />
-        <Route
-          path="/calendar"
-          element={<ProtectionRoutes children={<CalendarPage />} />}
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      {["/register", "/login", "/calendar", "/posts"].includes(pathname) && (
+        <Header />
+      )}
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route
+            path="/"
+            element={<ProtectionRoutes children={<WelcomePageComponent />} />}
+          />
+          <Route
+            path="/register"
+            element={<ProtectionRoutes children={<RegisterPageComponent />} />}
+          />
+          <Route
+            path="/login"
+            element={<ProtectionRoutes children={<LogInPagePageComponent />} />}
+          />
+          <Route
+            path="/calendar"
+            element={<ProtectionRoutes children={<CalendarPageComponent />} />}
+          />
+          <Route
+            path="/posts"
+            element={<ProtectionRoutes children={<PostsPageComponent />} />}
+          />
+          <Route path="*" element={<NotFoundPageComponent />} />
+        </Routes>
+      </Suspense>
       {isLoading && <Loading />}
       {showModal && (
         <Modal type={isError ? "error" : "success"} text={modalText} />
