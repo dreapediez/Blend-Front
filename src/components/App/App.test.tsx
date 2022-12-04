@@ -35,13 +35,16 @@ describe("Given an App component", () => {
     test("Then it should render login page with their header component", async () => {
       const headerText = "Welcome to Blendcommunity!";
 
-      render(
-        <Provider store={newStore}>
-          <MemoryRouter initialEntries={["/login"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+      // eslint-disable-next-line testing-library/no-unnecessary-act
+      await act(() => {
+        render(
+          <Provider store={newStore}>
+            <MemoryRouter initialEntries={["/login"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedHeading = screen.queryByRole("heading", {
