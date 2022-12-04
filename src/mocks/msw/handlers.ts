@@ -20,7 +20,17 @@ export const handlers = [
     );
   }),
 
-  rest.get(`${apiUrl}/posts/post/1`, (request, response, context) => {
-    return response(context.status(200), context.json({ posts: postMock }));
-  }),
+  rest.get(
+    `${apiUrl}/posts/post/638b38336f2e824ae4cd3a03`,
+    (request, response, context) => {
+      return response(context.status(200), context.json(postMock));
+    }
+  ),
+
+  rest.delete(
+    `${apiUrl}/posts/delete/638b38336f2e824ae4cd3a03`,
+    (request, response, context) => {
+      return response(context.status(200));
+    }
+  ),
 ];

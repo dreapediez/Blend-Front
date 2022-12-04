@@ -147,26 +147,6 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When it's render with Loading open", () => {
-    test("Then it should render login page with their header component", async () => {
-      const informationText = "loading";
-
-      render(
-        <Provider store={mockStoreLoading}>
-          <MemoryRouter initialEntries={["/login"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
-
-      await waitFor(() => {
-        const expectedModal = screen.queryByLabelText(informationText);
-
-        expect(expectedModal).toBeInTheDocument();
-      });
-    });
-  });
-
   describe("When it's render with an error", () => {
     test("Then it should show Modal Component with 'Something went wrong, please try again in a few minutes'", async () => {
       const informationText = "Error";
