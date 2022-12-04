@@ -9,6 +9,7 @@ export interface PostStructure {
   image: string;
   imageBackup: string;
   createdAt: string;
+  id: string;
 }
 
 export interface PostsState {

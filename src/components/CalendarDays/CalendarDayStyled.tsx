@@ -8,7 +8,7 @@ const CalendarDayStyled = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${mainStyleColors.mainColor};
-  min-width: 300px;
+  min-width: 320px;
   min-height: 300px;
   border-radius: 4px;
   padding: 25px;
