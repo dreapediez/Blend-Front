@@ -26,7 +26,11 @@ const useApi = () => {
       const apiResponse: {
         posts: PostStructure[];
       } = response.data;
-      dispatch(loadAllPostsActionCreator(apiResponse.posts));
+      dispatch(
+        loadAllPostsActionCreator(
+          apiResponse.posts.sort((a, b) => a.day - b.day)
+        )
+      );
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
