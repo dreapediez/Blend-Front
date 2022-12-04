@@ -32,4 +32,5 @@ export const postReducer = postSlice.reducer;
 export const {
   loadAllPosts: loadAllPostsActionCreator,
   loadOnePost: loadOnePostActionCreator,
+  deletePost: deletePostActionCreator,
 } = postSlice.actions;

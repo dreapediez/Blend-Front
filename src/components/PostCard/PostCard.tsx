@@ -1,14 +1,17 @@
-import { PostCardComponents } from "../../types/postsTypes";
+import useApi from "../../hooks/useApi/useApi";
+import { PostStructure } from "../../types/postsTypes";
 import Button from "../Button/Button";
 import PostCardStyled from "./PostCardStyled";
 
 interface PostCardProps {
-  post: PostCardComponents;
+  post: PostStructure;
 }
 
 const PostCard = ({
-  post: { day, title, answer1, answer2, answer3, answer4, image },
+  post: { day, title, answer1, answer2, answer3, answer4, image, id },
 }: PostCardProps): JSX.Element => {
+  const { deletePost } = useApi();
+
   return (
     <PostCardStyled>
       <div className="post">
@@ -41,6 +44,7 @@ const PostCard = ({
             className="form-footer__button"
             text="Delete"
             name="delete"
+            action={() => deletePost(id)}
             styletype="darkSmall"
           />
           <Button
