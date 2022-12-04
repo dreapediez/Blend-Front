@@ -13,6 +13,7 @@ import mockToken from "../../mocks/mockToken";
 
 afterEach(() => {
   jest.clearAllMocks();
+  localStorage.clear();
 });
 
 describe("Given an App component", () => {
@@ -33,8 +34,6 @@ describe("Given an App component", () => {
   describe("When it's rendered with path '/login'", () => {
     test("Then it should render login page with their header component", async () => {
       const headerText = "Welcome to Blendcommunity!";
-
-      localStorage.clear();
 
       render(
         <Provider store={newStore}>
