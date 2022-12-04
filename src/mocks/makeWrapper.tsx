@@ -24,7 +24,7 @@ export const currentUi: UiState = {
 export const currentSuccessUi: UiState = {
   isLoading: false,
   modal: {
-    isError: true,
+    isError: false,
     showModal: true,
     modalText: "Success",
   },
