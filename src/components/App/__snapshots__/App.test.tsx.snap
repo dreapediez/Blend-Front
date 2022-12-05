@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given an App component When it's rendered with path '/' Then it should render 'not found page' 1`] = `
+<div
+  className="sc-bcXHqe eSuVKC"
+>
+  <div
+    className="sc-dkrFOg hZgyDP"
+  >
+    <div
+      className="loading"
+      data-testid="loading"
+    >
+      <div
+        className="loading__lines"
+      >
+        <svg
+          className="loading__lines-one"
+          height="25"
+          width="20"
+        >
+          one.svg
+        </svg>
+        <svg
+          className="loading__lines-two"
+          height="30"
+          width="20"
+        >
+          two.svg
+        </svg>
+        <svg
+          className="loading__lines-three"
+          height="25"
+          width="20"
+        >
+          three.svg
+        </svg>
+      </div>
+      <svg
+        aria-label="loading"
+        className="loading__mug"
+        height="60"
+        width="100"
+      >
+        mug.svg
+      </svg>
+    </div>
+  </div>
+  <div
+    className="sc-dkrFOg hZgyDP"
+  >
+    <div
+      className="loading"
+      data-testid="loading"
+    >
+      <div
+        className="loading__lines"
+      >
+        <svg
+          className="loading__lines-one"
+          height="25"
+          width="20"
+        >
+          one.svg
+        </svg>
+        <svg
+          className="loading__lines-two"
+          height="30"
+          width="20"
+        >
+          two.svg
+        </svg>
+        <svg
+          className="loading__lines-three"
+          height="25"
+          width="20"
+        >
+          three.svg
+        </svg>
+      </div>
+      <svg
+        aria-label="loading"
+        className="loading__mug"
+        height="60"
+        width="100"
+      >
+        mug.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;

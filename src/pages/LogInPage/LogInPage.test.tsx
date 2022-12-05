@@ -10,6 +10,12 @@ import useToken from "../../hooks/useToken/useToken";
 import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
 import LogInPage from "./LogInPage";
 
+const mockNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockNavigate,
+}));
+
 const spyDispatch = jest.spyOn(mockStore, "dispatch");
 
 describe("Given a log in page", () => {
@@ -74,6 +80,9 @@ describe("Given a log in page", () => {
 
       await waitFor(() => {
         expect(spyDispatch).toHaveBeenCalled();
+      });
+      await waitFor(() => {
+        expect(mockNavigate).toHaveBeenCalled();
       });
     });
   });

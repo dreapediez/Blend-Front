@@ -3,21 +3,41 @@ import { useCallback } from "react";
 import {
   loadAllPostsActionCreator,
   loadOnePostActionCreator,
+  deletePostActionCreator,
 } from "../../redux/features/postSlice/postSlice";
-import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import {
+  hideLoadingActionCreator,
+  showLoadingActionCreator,
+  showModalActionCreator,
+} from "../../redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { PostStructure } from "../../types/postsTypes";
+import useToken from "../useToken/useToken";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
   const url = process.env.REACT_APP_API_URL;
+  const { getToken } = useToken();
+  const token = getToken();
 
   const loadAllPosts = useCallback(async () => {
     try {
-      const response = await axios.get(`${url}/posts`);
+      dispatch(showLoadingActionCreator());
+      const response = await axios.get(`${url}/posts`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
-      const apiResponse: PostStructure[] = response.data;
-      dispatch(loadAllPostsActionCreator(apiResponse));
+      const apiResponse: {
+        posts: PostStructure[];
+      } = response.data;
+      dispatch(hideLoadingActionCreator());
+      dispatch(
+        loadAllPostsActionCreator(
+          apiResponse.posts.sort((a, b) => a.day - b.day)
+        )
+      );
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
@@ -26,14 +46,14 @@ const useApi = () => {
         })
       );
     }
-  }, [dispatch, url]);
+  }, [dispatch, token, url]);
 
   const loadOnePost = useCallback(
-    async (day: string) => {
+    async (idPost: string) => {
       try {
-        const response = await axios.get(`${url}/posts/post/${day}`);
+        const response = await axios.get(`${url}/posts/post/${idPost}`);
 
-        const apiResponse: PostStructure = response.data;
+        const apiResponse = response.data;
 
         dispatch(loadOnePostActionCreator(apiResponse));
       } catch (error: unknown) {
@@ -48,7 +68,38 @@ const useApi = () => {
     [dispatch, url]
   );
 
-  return { loadAllPosts, loadOnePost };
+  const deletePost = useCallback(
+    async (idPost: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        await axios.delete(`${url}/posts/delete/${idPost}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        dispatch(deletePostActionCreator(idPost));
+        await loadAllPosts();
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: false,
+            modalText: "Post deleted successfully",
+          })
+        );
+      } catch (error: unknown) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modalText: `Something went wrong, please try again in a few minutes`,
+          })
+        );
+      }
+    },
+    [dispatch, loadAllPosts, token, url]
+  );
+
+  return { loadAllPosts, loadOnePost, deletePost };
 };
 
 export default useApi;

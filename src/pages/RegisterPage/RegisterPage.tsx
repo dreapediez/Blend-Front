@@ -40,9 +40,7 @@ const RegisterPage = (): JSX.Element => {
 
     const token = getToken();
 
-    if (token) {
-      navigate("/calendar");
-    }
+    token && navigate("/calendar");
   };
   return (
     <FormStyled>

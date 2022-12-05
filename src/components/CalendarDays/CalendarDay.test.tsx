@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { makeWrapper } from "../../mocks/makeWrapper";
 import CalendarDay from "./CalendarDay";
 
 describe("Given a Button component", () => {
@@ -7,7 +8,9 @@ describe("Given a Button component", () => {
       const textDay = "1";
       const expectedDay = 1;
 
-      render(<CalendarDay calendarDay={expectedDay} />);
+      render(<CalendarDay calendarDay={expectedDay} />, {
+        wrapper: makeWrapper,
+      });
 
       const expectedText = screen.queryByText(textDay);
 

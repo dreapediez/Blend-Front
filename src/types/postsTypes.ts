@@ -8,7 +8,8 @@ export interface PostStructure {
   answer4?: string;
   image: string;
   imageBackup: string;
-  createdAt: string;
+  createdAt: number;
+  id: string;
 }
 
 export interface PostsState {
