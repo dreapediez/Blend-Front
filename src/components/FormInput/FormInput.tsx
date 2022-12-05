@@ -19,14 +19,37 @@ const FormInput = ({
 }: FormInputProps): JSX.Element => {
   return (
     <FormInputStyled>
-      <span className="form__box">
-        {name === "username" && <FiUser className="form__icon" />}
-        {name === "register_username" && <FiUser className="form__icon" />}
-        {name === "password" && <FiLock className="form__icon" />}
-        {name === "register_password" && <FiLock className="form__icon" />}
-        {name === "email" && <FiMail className="form__icon" />}
-        {name === "image" && <FiImage className="form__icon" />}
-      </span>
+      {name === "username" && (
+        <span className="form__box">
+          <FiUser className="form__icon" />
+        </span>
+      )}
+      {name === "register_username" && (
+        <span className="form__box">
+          <FiUser className="form__icon" />
+        </span>
+      )}
+      {name === "password" && (
+        <span className="form__box">
+          <FiLock className="form__icon" />
+        </span>
+      )}
+      {name === "register_password" && (
+        <span className="form__box">
+          <FiLock className="form__icon" />
+        </span>
+      )}
+      {name === "email" && (
+        <span className="form__box">
+          <FiMail className="form__icon" />
+        </span>
+      )}
+      {name === "image" && (
+        <span className="form__box">
+          <FiImage className="form__icon" />
+        </span>
+      )}
+
       <div className="tooltip">
         <input
           className="form__input"

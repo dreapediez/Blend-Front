@@ -11,6 +11,7 @@ const FormInputStyled = styled.label`
   height: 55px;
   border-radius: 4px;
   background-color: ${mainStyleColors.mainColor};
+
   .form__input {
     border: none;
     outline: none;

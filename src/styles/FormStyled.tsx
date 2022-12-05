@@ -3,12 +3,10 @@ import mainStyleFonts from "./mainStyleFonts";
 import mainStyleColors from "./mainStyleColors";
 
 const FormStyled = styled.section`
-  .form__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .form-footer {
     display: flex;
     flex-direction: column;
