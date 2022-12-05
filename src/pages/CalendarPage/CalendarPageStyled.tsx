@@ -25,6 +25,13 @@ const CalendarPageStyled = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 30px;
+
+    @media only screen and (min-width: 950px) {
+      flex-direction: row;
+      gap: 100px;
+      width: 800px;
+      margin: 0 auto;
+    }
   }
 
   .day:nth-child(1) {
