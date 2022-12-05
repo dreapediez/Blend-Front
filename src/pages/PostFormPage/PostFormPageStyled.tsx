@@ -7,10 +7,14 @@ const PostFormPageStyled = styled.form`
 
   .input {
     &__text {
-      margin-left: 12px;
+      margin: 10px;
     }
     &__box {
     }
+  }
+
+  .form__button {
+    margin-top: 15px;
   }
 `;
 
