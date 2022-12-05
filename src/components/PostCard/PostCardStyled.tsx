@@ -5,6 +5,7 @@ import mainStyleFonts from "../../styles/mainStyleFonts";
 const PostCardStyled = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 320px;
   height: 100%;
@@ -12,6 +13,7 @@ const PostCardStyled = styled.div`
   border-radius: 4px;
   padding: 25px;
   margin: 0 auto;
+
   /* background-color: ${mainStyleColors.mainColor};
   background-image: url("/assets/snow.png"); */
   border: 2px solid ${mainStyleColors.accentColor};
@@ -19,36 +21,43 @@ const PostCardStyled = styled.div`
   @media only screen and (min-width: 950px) {
     flex-direction: row;
     gap: 100px;
-    width: 800px;
+    width: 700px;
   }
-
-  .post-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 55px;
-    margin-bottom: 20px;
-
-    &__day {
-      font-family: ${mainStyleFonts.mainFont};
-      font-weight: ${mainStyleFonts.mainFontBold};
-      color: ${mainStyleColors.secondaryColor};
-      font-size: 4rem;
-      margin: 10px;
+  .post {
+    @media only screen and (min-width: 950px) {
+      width: 350px;
     }
-    &__text {
-      font-weight: ${mainStyleFonts.mainFontBold};
-      color: ${mainStyleColors.secondaryColor};
-      font-size: 2rem;
-    }
-  }
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      height: 55px;
+      margin-bottom: 20px;
+      width: 260px;
+      gap: 15px;
+      justify-content: flex-start;
 
-  .post-answer {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    &__text {
-      margin: 10px 0;
+      &__day {
+        font-family: ${mainStyleFonts.mainFont};
+        font-weight: ${mainStyleFonts.mainFontBold};
+        color: ${mainStyleColors.secondaryColor};
+        font-size: 4rem;
+        margin: 10px;
+      }
+      &__text {
+        font-weight: ${mainStyleFonts.mainFontBold};
+        color: ${mainStyleColors.secondaryColor};
+        font-size: 2rem;
+      }
+    }
+    &-answer {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      &__text {
+        margin: 10px 0;
+      }
     }
   }
 
