@@ -7,6 +7,7 @@ import useToken from "../../hooks/useToken/useToken";
 import Modal from "../Modal/Modal";
 import Loading from "../Loading/Loading";
 import Header from "../Header/Header";
+import PostFormPage from "../../pages/PostFormPage/PostFormPage";
 
 const WelcomePageComponent = lazy(
   () => import("../../pages/WelcomePage/WelcomePage")
@@ -41,9 +42,9 @@ const App = () => {
 
   return (
     <AppStyled>
-      {["/register", "/login", "/calendar", "/posts"].includes(pathname) && (
-        <Header />
-      )}
+      {["/register", "/login", "/calendar", "/posts", "/new-post"].includes(
+        pathname
+      ) && <Header />}
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route
@@ -65,6 +66,10 @@ const App = () => {
           <Route
             path="/posts"
             element={<ProtectionRoutes children={<PostsPageComponent />} />}
+          />
+          <Route
+            path="/new-post"
+            element={<ProtectionRoutes children={<PostFormPage />} />}
           />
           <Route path="*" element={<NotFoundPageComponent />} />
         </Routes>

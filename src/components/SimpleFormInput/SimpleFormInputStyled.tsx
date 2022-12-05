@@ -8,7 +8,7 @@ const SimpleFormInputStyled = styled.label`
   margin: 10px 10px 20px 10px;
 
   .form__input {
-    padding: 5px 10px;
+    padding: 15px 10px;
     border: none;
     width: 320px;
     height: 55px;

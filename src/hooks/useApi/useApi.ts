@@ -99,7 +99,40 @@ const useApi = () => {
     [dispatch, loadAllPosts, token, url]
   );
 
-  return { loadAllPosts, loadOnePost, deletePost };
+  const createPost = useCallback(
+    async (post: Partial<PostStructure>) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const response = await axios.post(`${url}/posts/create`, post, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+
+        const apiResponse: PostStructure = response.data;
+
+        dispatch(loadOnePostActionCreator(apiResponse));
+
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: false,
+            modalText: "Post created successfully",
+          })
+        );
+      } catch (error: unknown) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modalText: `Something went wrong, please try again in a few minutes`,
+          })
+        );
+      }
+    },
+    [dispatch, token, url]
+  );
+
+  return { loadAllPosts, loadOnePost, deletePost, createPost };
 };
 
 export default useApi;
