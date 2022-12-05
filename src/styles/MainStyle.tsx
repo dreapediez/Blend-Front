@@ -8,11 +8,6 @@ const MainStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-html {
-  margin-bottom: 50px;
-
-}
-
 body {
   height: 100%;
   font-family: ${mainStyleFonts.secondaryFont};

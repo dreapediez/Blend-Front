@@ -20,7 +20,7 @@ const CalendarPage = (): JSX.Element => {
 
   return (
     <CalendarPageStyled>
-      <h2>Let’s open today’s window!</h2>
+      <h2 className="title">Let’s open today’s window!</h2>
 
       <div className="days">
         {calendarDays.map((day) => {

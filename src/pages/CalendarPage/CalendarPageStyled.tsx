@@ -19,19 +19,24 @@ for (let i = 2; i < 26; i++) {
 }
 
 const CalendarPageStyled = styled.div`
+  margin-bottom: 50px;
   .days {
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
 
     @media only screen and (min-width: 950px) {
       flex-direction: row;
-      gap: 100px;
-      width: 800px;
+      gap: 50px;
+      width: 700px;
       margin: 0 auto;
     }
+  }
+
+  .title {
+    margin-bottom: 25px;
   }
 
   .day:nth-child(1) {
