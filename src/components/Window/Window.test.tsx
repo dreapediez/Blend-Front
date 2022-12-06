@@ -7,7 +7,7 @@ describe("Given a Window component", () => {
     test("Then it should show the corresponding window with all the information that belongs to that day", () => {
       const window = windows[0];
 
-      render(<Window {...window} />);
+      render(<Window calendarDay={1} />);
 
       const windowTitle = screen.queryByRole("heading", {
         name: window.title,

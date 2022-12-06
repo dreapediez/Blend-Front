@@ -13,10 +13,8 @@ const PostCardStyled = styled.div`
   border-radius: 4px;
   padding: 25px;
   margin: 0 auto;
-
-  /* background-color: ${mainStyleColors.mainColor};
-  background-image: url("/assets/snow.png"); */
-  border: 2px solid ${mainStyleColors.accentColor};
+  background-color: ${mainStyleColors.mainColor};
+  background-image: url("/assets/snow.png");
 
   @media only screen and (min-width: 950px) {
     flex-direction: row;

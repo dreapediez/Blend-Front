@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
+import SelectFormInput from "../../components/SelectFormInput/SelectFormInput";
 import SimpleFormInput from "../../components/SimpleFormInput/SimpleFormInput";
 import useApi from "../../hooks/useApi/useApi";
 import { PostStructure } from "../../types/postsTypes";
 import PostFormPageStyled from "./PostFormPageStyled";
+import Window from "../../components/Window/Window";
 
 const PostFormPage = (): JSX.Element => {
   // const params = useParams();
@@ -48,8 +49,11 @@ const PostFormPage = (): JSX.Element => {
     await createPost(postSubmit);
   };
   return (
-    <PostFormPageStyled>
-      <form onSubmit={handleSubmit}>
+    <>
+      <Window calendarDay={1} />
+
+      <PostFormPageStyled onSubmit={handleSubmit}>
+        <SelectFormInput />
         <div className="input">
           <span className="input__text">Have you added any ingredient?</span>
           <SimpleFormInput
@@ -95,8 +99,8 @@ const PostFormPage = (): JSX.Element => {
           text="Send"
           styletype="light"
         />
-      </form>
-    </PostFormPageStyled>
+      </PostFormPageStyled>
+    </>
   );
 };
 

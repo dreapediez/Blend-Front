@@ -13,9 +13,6 @@ const PostPreviewStyled = styled.div`
   border-radius: 4px;
   padding: 25px;
   margin: 0 auto;
-
-  /* background-color: ${mainStyleColors.mainColor};
-  background-image: url("/assets/snow.png"); */
   border: 2px solid ${mainStyleColors.accentColor};
 
   @media only screen and (min-width: 950px) {
