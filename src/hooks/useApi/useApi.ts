@@ -21,8 +21,8 @@ const useApi = () => {
   const token = getToken();
 
   const loadAllPosts = useCallback(async () => {
+    dispatch(showLoadingActionCreator());
     try {
-      dispatch(showLoadingActionCreator());
       const response = await axios.get(`${url}/posts`, {
         headers: {
           Authorization: "Bearer " + token,
@@ -32,7 +32,6 @@ const useApi = () => {
       const apiResponse: {
         posts: PostStructure[];
       } = response.data;
-      dispatch(hideLoadingActionCreator());
       dispatch(
         loadAllPostsActionCreator(
           apiResponse.posts.sort((a, b) => a.day - b.day)
@@ -45,11 +44,14 @@ const useApi = () => {
           modalText: `Something went wrong, please try again in a few minutes`,
         })
       );
+    } finally {
+      dispatch(hideLoadingActionCreator());
     }
   }, [dispatch, token, url]);
 
   const loadOnePost = useCallback(
     async (idPost: string) => {
+      dispatch(showLoadingActionCreator());
       try {
         const response = await axios.get(`${url}/posts/post/${idPost}`);
 
@@ -63,6 +65,8 @@ const useApi = () => {
             modalText: `Something went wrong, please try again in a few minutes`,
           })
         );
+      } finally {
+        dispatch(hideLoadingActionCreator());
       }
     },
     [dispatch, url]
@@ -70,8 +74,8 @@ const useApi = () => {
 
   const deletePost = useCallback(
     async (idPost: string) => {
+      dispatch(showLoadingActionCreator());
       try {
-        dispatch(showLoadingActionCreator());
         await axios.delete(`${url}/posts/delete/${idPost}`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -80,7 +84,6 @@ const useApi = () => {
 
         dispatch(deletePostActionCreator(idPost));
         await loadAllPosts();
-        dispatch(hideLoadingActionCreator());
         dispatch(
           showModalActionCreator({
             isError: false,
@@ -94,6 +97,8 @@ const useApi = () => {
             modalText: `Something went wrong, please try again in a few minutes`,
           })
         );
+      } finally {
+        dispatch(hideLoadingActionCreator());
       }
     },
     [dispatch, loadAllPosts, token, url]
@@ -101,8 +106,8 @@ const useApi = () => {
 
   const createPost = useCallback(
     async (post: Partial<PostStructure>) => {
+      dispatch(showLoadingActionCreator());
       try {
-        dispatch(showLoadingActionCreator());
         const response = await axios.post(`${url}/posts/create`, post, {
           headers: {
             Authorization: "Bearer " + token,
@@ -113,7 +118,6 @@ const useApi = () => {
 
         dispatch(loadOnePostActionCreator(apiResponse));
 
-        dispatch(hideLoadingActionCreator());
         dispatch(
           showModalActionCreator({
             isError: false,
@@ -127,6 +131,8 @@ const useApi = () => {
             modalText: `Something went wrong, please try again in a few minutes`,
           })
         );
+      } finally {
+        dispatch(hideLoadingActionCreator());
       }
     },
     [dispatch, token, url]

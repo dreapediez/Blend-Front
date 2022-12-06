@@ -4,6 +4,7 @@ const PostFormPageStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 
   .input {
     &__text {

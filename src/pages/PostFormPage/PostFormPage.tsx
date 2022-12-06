@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Button from "../../components/Button/Button";
 import FormInput from "../../components/FormInput/FormInput";
 import SelectFormInput from "../../components/SelectFormInput/SelectFormInput";
@@ -7,10 +7,13 @@ import useApi from "../../hooks/useApi/useApi";
 import { PostStructure } from "../../types/postsTypes";
 import PostFormPageStyled from "./PostFormPageStyled";
 import Window from "../../components/Window/Window";
+import windows from "../../components/Window/windows";
+import { WindowStructure } from "../../types/calendarTypes";
+import { useAppSelector } from "../../redux/hooks";
 
 const PostFormPage = (): JSX.Element => {
-  // const params = useParams();
-  const { createPost } = useApi();
+  const { createPost, loadAllPosts } = useApi();
+  const posts = useAppSelector((action) => action.post.list);
 
   const initialPostState = {
     answer1: "",
@@ -18,18 +21,39 @@ const PostFormPage = (): JSX.Element => {
     answer3: "",
     answer4: "",
     image: "",
+    day: 0,
   };
 
   const [createPostData, setCreatePostData] = useState(initialPostState);
+  const [windowData, setWindowData] = useState<WindowStructure>(
+    {} as WindowStructure
+  );
+  const [windowsData, setWindowsData] = useState<WindowStructure[]>([]);
 
   const handleFormValues = (
     event:
       | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
+    if (event.target.name === "days") {
+      const day = +event.target.value;
+      const window = windows.find((window) => window.day === day);
+
+      setWindowData(window!);
+
+      if (day === 0) return;
+
+      setCreatePostData({
+        ...createPostData,
+        day,
+      });
+      return;
+    }
+
     setCreatePostData({
       ...createPostData,
-      [event.target.id]: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -42,18 +66,29 @@ const PostFormPage = (): JSX.Element => {
       answer3: createPostData.answer3,
       answer4: createPostData.answer4,
       image: createPostData.image,
-      day: 0,
-      title: "",
+      day: createPostData.day,
+      title: windowData.title,
     };
 
     await createPost(postSubmit);
   };
+
+  useMemo(() => {
+    const newWindows = windows.filter(
+      (window) => !posts.find((post) => post.day === window.day)
+    );
+    setWindowsData(newWindows);
+  }, [posts]);
+
+  useEffect(() => {
+    loadAllPosts();
+  }, [loadAllPosts]);
+
   return (
     <>
-      <Window calendarDay={1} />
-
+      <Window {...windowData} />
       <PostFormPageStyled onSubmit={handleSubmit}>
-        <SelectFormInput />
+        <SelectFormInput action={handleFormValues} windows={windowsData} />
         <div className="input">
           <span className="input__text">Have you added any ingredient?</span>
           <SimpleFormInput
@@ -90,7 +125,6 @@ const PostFormPage = (): JSX.Element => {
           placeholder="Add a picture"
           type="text"
           name="image"
-          required={true}
           action={handleFormValues}
         />
         <Button

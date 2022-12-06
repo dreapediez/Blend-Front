@@ -1,14 +1,17 @@
 import WindowStyled from "./WindowStyled";
 import { ReactComponent as Time } from "../../assets/time.svg";
 import { ReactComponent as Temperature } from "../../assets/mini-mug.svg";
-import windows from "./windows";
+import { WindowStructure } from "../../types/calendarTypes";
 
-const Window = ({ calendarDay }: { calendarDay: number }): JSX.Element => {
-  const window = windows.find((window) => window.day === calendarDay);
-
-  const { brewed, day, ingredients, teaType, temperature, time, title } =
-    window!;
-
+const Window = ({
+  brewed,
+  day,
+  ingredients,
+  teaType,
+  temperature,
+  time,
+  title,
+}: WindowStructure): JSX.Element => {
   return (
     <WindowStyled>
       <div className="title">
