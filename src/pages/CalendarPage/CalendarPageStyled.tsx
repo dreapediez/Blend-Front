@@ -20,18 +20,16 @@ for (let i = 2; i < 26; i++) {
 
 const CalendarPageStyled = styled.div`
   margin-bottom: 50px;
+  flex-wrap: wrap;
   .days {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(1, 320px);
     justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
 
     @media only screen and (min-width: 950px) {
-      flex-direction: row;
-      gap: 50px;
-      width: 700px;
-      margin: 0 auto;
+      grid-template-columns: repeat(4, 430px);
     }
   }
 

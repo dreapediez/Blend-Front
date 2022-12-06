@@ -3,7 +3,13 @@ import { BsPlusCircle } from "react-icons/bs";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 interface ButtonProps {
-  styletype: "dark" | "light" | "darkSmall" | "lightSmall";
+  styletype:
+    | "dark"
+    | "light"
+    | "darkSmall"
+    | "lightSmall"
+    | "darkSuperSmall"
+    | "lightSuperSmall";
   type: "submit" | "button" | "link";
   text: string;
   className?: string;

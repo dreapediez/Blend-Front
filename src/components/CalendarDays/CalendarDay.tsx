@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import CalendarDayStyled from "./CalendarDayStyled";
 import { BsPlusCircle } from "react-icons/bs";
 import windows from "../Window/windows";
-
 interface CalendarDayProps {
   calendarDay: number;
 }
