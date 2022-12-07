@@ -2,7 +2,7 @@ import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import mainStyleColors from "../../styles/mainStyleColors";
 
 const daysStyle: FlattenSimpleInterpolation[] = [];
-const nameBackgrounds: string[] = ["snow", "pic", "star"];
+const nameBackgrounds: string[] = ["snow", "star", "clor", "bol", "car", "zeb"];
 
 const randomBackground = () => {
   const randomIndex = Math.floor(Math.random() * nameBackgrounds.length);

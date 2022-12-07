@@ -10,12 +10,10 @@ const PostFormPageStyled = styled.form`
     &__text {
       margin: 10px;
     }
-    &__box {
-    }
   }
 
-  .form__button {
-    margin-top: 15px;
+  .new-post {
+    margin: 0 auto 30px;
   }
 `;
 
