@@ -9,7 +9,6 @@ import {
 } from "../../redux/features/postSlice/postSlice";
 import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { ShowModalActionPayload } from "../../types/modalTypes";
-import { PostStructure } from "../../types/postsTypes";
 import useApi from "./useApi";
 
 const mockDispatch = jest.fn();
