@@ -13,7 +13,12 @@ const SelectFormInput = ({
 }: SelectFormInputProps): JSX.Element => {
   return (
     <SelectFormInputStyled>
-      <select className="form__select" onChange={action} defaultValue={0}>
+      <select
+        className="form__select"
+        onChange={action}
+        defaultValue={0}
+        name="days"
+      >
         <option value={0}>Select a calendar day</option>
         {windows.map((window) => (
           <option
