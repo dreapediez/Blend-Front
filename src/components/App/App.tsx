@@ -22,7 +22,7 @@ const CalendarPageComponent = lazy(
   () => import("../../pages/CalendarPage/CalendarPage")
 );
 const PostsPageComponent = lazy(
-  () => import("../../pages/PostsPage/PostsPage")
+  () => import("../../pages/PostsPage/PostDetailPage")
 );
 const NotFoundPageComponent = lazy(
   () => import("../../pages/NotFoundPage/NotFoundPage")
@@ -42,9 +42,9 @@ const App = () => {
 
   return (
     <AppStyled>
-      {["/register", "/login", "/calendar", "/posts", "/new-post"].includes(
-        pathname
-      ) && <Header />}
+      {["/register", "/login", "/calendar", "/new-post"].includes(pathname) && (
+        <Header />
+      )}
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route
@@ -64,7 +64,7 @@ const App = () => {
             element={<ProtectionRoutes children={<CalendarPageComponent />} />}
           />
           <Route
-            path="/posts"
+            path="/detail-post/:idPost"
             element={<ProtectionRoutes children={<PostsPageComponent />} />}
           />
           <Route

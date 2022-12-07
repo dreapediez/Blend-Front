@@ -38,7 +38,7 @@ const NotFoundPage = (): JSX.Element => {
         <span className="form-footer__link">
           Do you want some tea?
           <Link to="/calendar" className="form-footer__link-anchor">
-            Back home
+            Back to Calendar
           </Link>
         </span>
       </NotFoundPageStyled>

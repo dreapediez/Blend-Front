@@ -23,7 +23,7 @@ const PostPreview = ({
         <div className="post-answer">
           <h3 className="post-answer__title">Tea moment</h3>
           <p className="post-answer__text">{answer4}</p>
-          <Link to="/posts" className="post-detail">
+          <Link to={`/detail-post/${id}`} className="post-detail">
             View more about this post
           </Link>
         </div>

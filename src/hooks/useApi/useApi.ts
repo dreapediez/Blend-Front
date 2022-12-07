@@ -53,7 +53,11 @@ const useApi = () => {
     async (idPost: string) => {
       dispatch(showLoadingActionCreator());
       try {
-        const response = await axios.get(`${url}/posts/post/${idPost}`);
+        const response = await axios.get(`${url}/posts/post/${idPost}`, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
 
         const apiResponse = response.data;
 
@@ -69,7 +73,7 @@ const useApi = () => {
         dispatch(hideLoadingActionCreator());
       }
     },
-    [dispatch, url]
+    [dispatch, token, url]
   );
 
   const deletePost = useCallback(
