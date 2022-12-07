@@ -2,14 +2,14 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { postPropsMock } from "../../mocks/listOfPostsMock";
+import { postMock } from "../../mocks/listOfPostsMock";
 import { newStore } from "../../redux/store";
 import PostPreview from "./PostPreview";
 
 describe("Given a PostPreview component", () => {
   describe("When it is rendered with a post title 'Pancake Stack'", () => {
     test("Then it should show the text in a heading of level 3", async () => {
-      const postTest = postPropsMock;
+      const postTest = postMock;
       const buttonText = "Delete";
 
       render(
