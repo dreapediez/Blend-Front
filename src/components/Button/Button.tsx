@@ -1,5 +1,4 @@
 import { ButtonStyled, LinkStyled } from "./ButtonStyled";
-import { BsPlusCircle } from "react-icons/bs";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 interface ButtonProps {
