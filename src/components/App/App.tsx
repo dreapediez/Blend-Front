@@ -22,7 +22,7 @@ const CalendarPageComponent = lazy(
   () => import("../../pages/CalendarPage/CalendarPage")
 );
 const PostsPageComponent = lazy(
-  () => import("../../pages/PostsPage/PostDetailPage")
+  () => import("../../pages/PostDetailPage/PostDetailPage")
 );
 const NotFoundPageComponent = lazy(
   () => import("../../pages/NotFoundPage/NotFoundPage")

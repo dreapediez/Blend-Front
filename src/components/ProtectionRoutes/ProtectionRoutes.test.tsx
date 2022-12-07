@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { newStore } from "../../redux/store";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import ProtectionRoutes from "./ProtectionRoutes";
@@ -10,18 +10,21 @@ import mockToken from "../../mocks/mockToken";
 
 describe("Given a ProtectionRoute component", () => {
   describe("When it's rendered at welcome page without token at local storage", () => {
-    test("Then it should redirects the user to login page", () => {
+    test("Then it should redirects the user to login page", async () => {
       const headerText = "You are my favorite tea moment";
 
       window.localStorage.clear();
 
-      render(
-        <Provider store={newStore}>
-          <MemoryRouter initialEntries={["/calendar"]}>
-            <ProtectionRoutes children={<WelcomePage />} />
-          </MemoryRouter>
-        </Provider>
-      );
+      // eslint-disable-next-line testing-library/no-unnecessary-act
+      await act(() => {
+        render(
+          <Provider store={newStore}>
+            <MemoryRouter initialEntries={["/calendar"]}>
+              <ProtectionRoutes children={<WelcomePage />} />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       const expectedHeading = screen.queryByRole("heading", {
         name: headerText,
@@ -32,18 +35,21 @@ describe("Given a ProtectionRoute component", () => {
   });
 
   describe("When it's rendered at login page with a token at local storage", () => {
-    test("Then it should redirects the user to calendar page", () => {
+    test("Then it should redirects the user to calendar page", async () => {
       const headerText = "Let’s open today’s window!";
 
       window.localStorage.setItem("token", mockToken);
 
-      render(
-        <Provider store={mockStore}>
-          <BrowserRouter>
-            <ProtectionRoutes children={<CalendarPage />} />
-          </BrowserRouter>
-        </Provider>
-      );
+      // eslint-disable-next-line testing-library/no-unnecessary-act
+      await act(() => {
+        render(
+          <Provider store={mockStore}>
+            <BrowserRouter>
+              <ProtectionRoutes children={<CalendarPage />} />
+            </BrowserRouter>
+          </Provider>
+        );
+      });
 
       const expectedHeading = screen.queryByRole("heading", {
         name: headerText,

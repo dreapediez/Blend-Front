@@ -27,6 +27,13 @@ export const handlers = [
     }
   ),
 
+  rest.delete(
+    `${apiUrl}/posts/delete/638b38336f2e824ae4cd3a03`,
+    (request, response, context) => {
+      return response(context.status(200), context.json(postMock));
+    }
+  ),
+
   rest.post(`${apiUrl}/posts/create`, (request, response, context) => {
     return response(context.status(200));
   }),
