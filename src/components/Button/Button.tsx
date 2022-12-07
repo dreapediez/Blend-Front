@@ -36,9 +36,6 @@ const Button = ({
           onClick={action}
         >
           <span className="box">
-            {name === "post" && (
-              <BsPlusCircle className="icon" width="100" data-testid="plus" />
-            )}
             {name === "delete" && (
               <FaRegTrashAlt className="icon" data-testid="trash" />
             )}

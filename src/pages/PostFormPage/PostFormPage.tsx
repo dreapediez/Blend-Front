@@ -88,7 +88,11 @@ const PostFormPage = (): JSX.Element => {
     <>
       <Window {...windowData} />
       <PostFormPageStyled onSubmit={handleSubmit}>
-        <SelectFormInput action={handleFormValues} windows={windowsData} />
+        <SelectFormInput
+          action={handleFormValues}
+          windows={windowsData}
+          name="day"
+        />
         <div className="input">
           <span className="input__text">Have you added any ingredient?</span>
           <SimpleFormInput

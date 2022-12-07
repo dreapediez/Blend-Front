@@ -128,7 +128,7 @@ const useApi = () => {
         dispatch(
           showModalActionCreator({
             isError: true,
-            modalText: `Something went wrong, please try again in a few minutes`,
+            modalText: `Post already exists`,
           })
         );
       } finally {

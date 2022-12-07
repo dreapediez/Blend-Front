@@ -70,7 +70,7 @@ describe("Given a Button component", () => {
     });
   });
 
-  test("And its should show a button with text 'Delete' on click and a svg data-testid label 'modify'", () => {
+  test("And its should show a button with text 'Modify' on click and a svg data-testid label 'modify'", () => {
     const textButton = "Modify";
     const buttonTypeLightSmall = "lightSmall";
     const buttonAction = jest.fn();

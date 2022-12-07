@@ -5,11 +5,13 @@ import { WindowStructure } from "../../types/calendarTypes";
 interface SelectFormInputProps {
   action?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   windows: WindowStructure[];
+  name?: string;
 }
 
 const SelectFormInput = ({
   action,
   windows,
+  name,
 }: SelectFormInputProps): JSX.Element => {
   return (
     <SelectFormInputStyled>
