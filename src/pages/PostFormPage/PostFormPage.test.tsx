@@ -67,8 +67,8 @@ describe("Given a register page", () => {
       });
 
       const postInput = {
-        day: 1,
-        title: "Pancake Stack",
+        day: 3,
+        title: "Santas Milk & Cookies",
         answer1: "Cinnamon",
         answer2: "Last Christmas - Wham!",
         answer3: "Fool - Christopher Moore",

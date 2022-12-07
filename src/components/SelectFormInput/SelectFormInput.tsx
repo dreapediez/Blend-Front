@@ -5,25 +5,22 @@ import { WindowStructure } from "../../types/calendarTypes";
 interface SelectFormInputProps {
   action?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   windows: WindowStructure[];
-  name?: string;
 }
 
 const SelectFormInput = ({
   action,
   windows,
-  name,
 }: SelectFormInputProps): JSX.Element => {
   return (
     <SelectFormInputStyled>
-      <select
-        className="form__select"
-        onChange={action}
-        defaultValue={0}
-        name="days"
-      >
+      <select className="form__select" onChange={action} defaultValue={0}>
         <option value={0}>Select a calendar day</option>
         {windows.map((window) => (
-          <option value={window.day} key={window.day}>
+          <option
+            data-testid="select-option"
+            value={window.day}
+            key={window.day}
+          >
             Calendar Day {window.day}
           </option>
         ))}
