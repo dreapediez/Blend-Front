@@ -1,15 +1,8 @@
-import {
-  act,
-  render,
-  renderHook,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import useApi from "../../hooks/useApi/useApi";
-import { makeWrapperMockStore, mockStore } from "../../mocks/makeWrapper";
+import { mockStore } from "../../mocks/makeWrapper";
 import PostFormPage from "./PostFormPage";
 
 const spyDispatch = jest.spyOn(mockStore, "dispatch");
@@ -60,12 +53,6 @@ describe("Given a register page", () => {
 
   describe("When it's rendered with the create post inputs completed", () => {
     test("Then it should show the typed values on the screen", async () => {
-      const {
-        result: { current },
-      } = renderHook(() => useApi(), {
-        wrapper: makeWrapperMockStore,
-      });
-
       const postInput = {
         day: 3,
         title: "Santas Milk & Cookies",
@@ -110,10 +97,6 @@ describe("Given a register page", () => {
       await userEvent.type(description!, postInput.answer4);
       await userEvent.type(image!, postInput.image);
 
-      await act(() => {
-        current.createPost(postInput);
-      });
-
       expect(ingredients).toHaveDisplayValue(postInput.answer1);
       expect(song).toHaveDisplayValue(postInput.answer2);
       expect(book).toHaveDisplayValue(postInput.answer3);
@@ -123,6 +106,30 @@ describe("Given a register page", () => {
       await waitFor(() => {
         expect(spyDispatch).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe("When it's rendered with a select input", () => {
+    test("Then it should show all their options to can select between the calendar days", async () => {
+      const labelOneDay = "Calendar Day 4";
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <PostFormPage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const postDaySelect = screen.queryByRole("combobox");
+      const postDayOption = screen.queryByRole("option", {
+        name: labelOneDay,
+      });
+
+      await userEvent.selectOptions(postDaySelect!, postDayOption!);
+
+      expect(postDaySelect).toBeInTheDocument();
+      expect(postDayOption).toBeInTheDocument();
     });
   });
 });

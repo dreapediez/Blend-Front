@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-unnecessary-act */
 import App from "./App";
 import { MemoryRouter } from "react-router-dom";
 import TestRenderer from "react-test-renderer";
@@ -35,7 +36,6 @@ describe("Given an App component", () => {
     test("Then it should render login page with their header component", async () => {
       const headerText = "Welcome to Blendcommunity!";
 
-      // eslint-disable-next-line testing-library/no-unnecessary-act
       await act(() => {
         render(
           <Provider store={newStore}>
@@ -60,13 +60,15 @@ describe("Given an App component", () => {
     test("Then it should render register page with their header component", async () => {
       const headerText = "Join our community";
 
-      render(
-        <Provider store={newStore}>
-          <MemoryRouter initialEntries={["/register"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+      await act(() => {
+        render(
+          <Provider store={newStore}>
+            <MemoryRouter initialEntries={["/register"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedHeading = screen.queryByRole("heading", {
@@ -84,13 +86,15 @@ describe("Given an App component", () => {
 
       localStorage.setItem("token", mockToken);
 
-      render(
-        <Provider store={mockStoreLoading}>
-          <MemoryRouter initialEntries={["/calendar"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+      await act(() => {
+        render(
+          <Provider store={mockStoreLoading}>
+            <MemoryRouter initialEntries={["/calendar"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedHeading = screen.queryByRole("heading", {
@@ -102,19 +106,23 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When it's rendered with path '/detail-post/:idPost'", () => {
+  describe("When it's rendered with path '/detail-post/638b38336f2e824ae4cd3a03'", () => {
     test("Then it should render calendar page with their header component", async () => {
       const titleText = "Today's post is amazing... Congratulations!";
 
       localStorage.setItem("token", mockToken);
 
-      render(
-        <Provider store={mockStoreLoading}>
-          <MemoryRouter initialEntries={["/detail-post/:idPost"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+      await act(() => {
+        render(
+          <Provider store={mockStoreLoading}>
+            <MemoryRouter
+              initialEntries={["/detail-post/638b38336f2e824ae4cd3a03"]}
+            >
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedHeading = screen.queryByRole("heading", {
@@ -128,13 +136,15 @@ describe("Given an App component", () => {
 
   describe("When it's rendered with path '/404'", () => {
     test("Then it should render not found page with their header component", async () => {
-      render(
-        <Provider store={mockStoreLoading}>
-          <MemoryRouter initialEntries={["/404"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+      await act(() => {
+        render(
+          <Provider store={mockStoreLoading}>
+            <MemoryRouter initialEntries={["/404"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const icon = screen.queryByTestId("404-icon");
@@ -147,13 +157,16 @@ describe("Given an App component", () => {
   describe("When it's render with an error", () => {
     test("Then it should show Modal Component with 'Something went wrong, please try again in a few minutes'", async () => {
       const informationText = "Error";
-      render(
-        <Provider store={mockStore}>
-          <MemoryRouter initialEntries={["/"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+
+      await act(() => {
+        render(
+          <Provider store={mockStore}>
+            <MemoryRouter initialEntries={["/"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedModal = screen.queryByText(informationText);
@@ -166,13 +179,16 @@ describe("Given an App component", () => {
   describe("When it's render with a success", () => {
     test("Then it should show Modal Component with 'Success'", async () => {
       const informationText = "Success";
-      render(
-        <Provider store={mockSuccessStore}>
-          <MemoryRouter initialEntries={["/"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
+
+      await act(() => {
+        render(
+          <Provider store={mockSuccessStore}>
+            <MemoryRouter initialEntries={["/"]}>
+              <App />
+            </MemoryRouter>
+          </Provider>
+        );
+      });
 
       await waitFor(() => {
         const expectedModal = screen.queryByText(informationText);
