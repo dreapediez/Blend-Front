@@ -102,29 +102,26 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When it's rendered with path '/posts'", () => {
-    test("Then it should render posts page with their header component", async () => {
-      const titleText = "Extra ingredients";
+  describe("When it's rendered with path '/detail-post/:idPost'", () => {
+    test("Then it should render calendar page with their header component", async () => {
+      const titleText = "Today's post is amazing... Congratulations!";
 
       localStorage.setItem("token", mockToken);
 
-      // eslint-disable-next-line testing-library/no-unnecessary-act
-      await act(() => {
-        render(
-          <Provider store={mockStoreLoading}>
-            <MemoryRouter initialEntries={["/posts"]}>
-              <App />
-            </MemoryRouter>
-          </Provider>
-        );
-      });
+      render(
+        <Provider store={mockStoreLoading}>
+          <MemoryRouter initialEntries={["/detail-post/:idPost"]}>
+            <App />
+          </MemoryRouter>
+        </Provider>
+      );
 
       await waitFor(() => {
-        const expectedHeading = screen.queryAllByRole("heading", {
+        const expectedHeading = screen.queryByRole("heading", {
           name: titleText,
         });
 
-        expect(expectedHeading[0]).toBeInTheDocument();
+        expect(expectedHeading).toBeInTheDocument();
       });
     });
   });
