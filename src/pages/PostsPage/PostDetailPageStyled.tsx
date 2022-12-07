@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import mainStyleColors from "../../styles/mainStyleColors";
 
-const PostsPageStyled = styled.div`
+const PostDetailPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
@@ -13,4 +13,4 @@ const PostsPageStyled = styled.div`
   }
 `;
 
-export default PostsPageStyled;
+export default PostDetailPageStyled;
