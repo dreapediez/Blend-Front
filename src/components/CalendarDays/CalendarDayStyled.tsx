@@ -12,6 +12,9 @@ const CalendarDayStyled = styled.div`
   min-height: 300px;
   border-radius: 4px;
   padding: 20px;
+  @media only screen and (min-width: 950px) {
+    min-width: 430px;
+  }
 
   .day__title {
     display: flex;

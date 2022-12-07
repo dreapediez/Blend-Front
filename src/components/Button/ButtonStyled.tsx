@@ -5,7 +5,13 @@ import mainStyleFonts from "../../styles/mainStyleFonts";
 import mainStyleSizes from "../../styles/mainStyleSizes";
 
 interface ButtonStyledProps {
-  styletype: "dark" | "light" | "darkSmall" | "lightSmall";
+  styletype:
+    | "dark"
+    | "light"
+    | "darkSmall"
+    | "lightSmall"
+    | "darkSuperSmall"
+    | "lightSuperSmall";
 }
 
 const darkButton = css`
@@ -33,6 +39,7 @@ const lightButton = css`
     color: ${mainStyleColors.neutralColor};
   }
 `;
+
 const darkSmallButton = css`
   background-color: ${mainStyleColors.accentColor};
   font-size: ${mainStyleFonts.smallFontSize};
@@ -45,6 +52,7 @@ const darkSmallButton = css`
     border: 2px solid ${mainStyleColors.secondaryColor};
   }
 `;
+
 const lightSmallButton = css`
   background-color: ${mainStyleColors.neutralColor};
   font-size: ${mainStyleFonts.smallFontSize};
@@ -57,6 +65,34 @@ const lightSmallButton = css`
     background-color: ${mainStyleColors.accentColorHover};
     border: none;
     color: ${mainStyleColors.neutralColor};
+  }
+`;
+
+const lightSuperSmallButton = css`
+  background-color: ${mainStyleColors.neutralColor};
+  font-size: 0.8rem;
+  color: ${mainStyleColors.accentColor};
+  width: 75px;
+  height: 65px;
+  border: 2px solid ${mainStyleColors.accentColor};
+  font-weight: ${mainStyleFonts.mainFontBold};
+  &:hover {
+    background-color: ${mainStyleColors.accentColorHover};
+    border: none;
+    color: ${mainStyleColors.neutralColor};
+  }
+`;
+
+const darkSuperSmallButton = css`
+  background-color: ${mainStyleColors.accentColor};
+  font-size: 0.8rem;
+  color: ${mainStyleColors.textLightColor};
+  width: 75px;
+  height: 65px;
+  border: 2px solid ${mainStyleColors.accentColor};
+  &:hover {
+    background-color: ${mainStyleColors.accentColorHover};
+    border: 2px solid ${mainStyleColors.secondaryColor};
   }
 `;
 
@@ -83,6 +119,8 @@ const styledAsButton = css<ButtonStyledProps>`
   ${({ styletype }) => styletype === "light" && lightButton}
   ${({ styletype }) => styletype === "darkSmall" && darkSmallButton}
   ${({ styletype }) => styletype === "lightSmall" && lightSmallButton}
+  ${({ styletype }) => styletype === "darkSuperSmall" && darkSuperSmallButton}
+  ${({ styletype }) => styletype === "lightSuperSmall" && lightSuperSmallButton}
 `;
 
 export const ButtonStyled = styled.button<ButtonStyledProps>`

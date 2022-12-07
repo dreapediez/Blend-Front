@@ -163,4 +163,45 @@ describe("Given the custom hook useApi", () => {
       });
     });
   });
+
+  describe("When its method createPost is called with all the information to create a new post", () => {
+    test("Then it should call dispatch function showModalActionCreator with isError false and text 'Post created successfully'", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useApi(), {
+        wrapper: makeWrapperMockStore,
+      });
+
+      await act(() => {
+        current.createPost(postMock);
+      });
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe("When its method createPost is called with to create a post that already exists", () => {
+    test("Then it should call dispatch function showModalActionCreator with isError true and text 'Post already exists'", async () => {
+      const {
+        result: { current },
+      } = renderHook(() => useApi(), {
+        wrapper: makeWrapperMockStore,
+      });
+
+      const expectedPayload: ShowModalActionPayload = {
+        isError: true,
+        modalText: `Post already exists`,
+      };
+
+      await act(() => {
+        axios.post = jest.fn().mockRejectedValue(new AxiosError());
+        current.createPost(postMock);
+      });
+      expect(mockDispatch).toHaveBeenCalledWith(
+        showModalActionCreator(expectedPayload)
+      );
+    });
+  });
 });

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import CalendarDay from "../../components/CalendarDays/CalendarDay";
-import PostCard from "../../components/PostCard/PostCard";
+import PostPreview from "../../components/PostPreview/PostPreview";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppSelector } from "../../redux/hooks";
 import CalendarPageStyled from "./CalendarPageStyled";
@@ -27,7 +27,7 @@ const CalendarPage = (): JSX.Element => {
           const post = postsList.find((postDay) => postDay.day === day);
 
           return post ? (
-            <PostCard post={post} key={post.day} />
+            <PostPreview post={post} key={post.day} />
           ) : (
             <CalendarDay key={day} calendarDay={day} />
           );

@@ -5,55 +5,71 @@ import mainStyleFonts from "../../styles/mainStyleFonts";
 const WindowStyled = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 340px;
+  align-items: flex-end;
+  width: 320px;
   height: 100%;
-  border: 2px solid #000;
+  border: 2px solid ${mainStyleColors.accentColor};
   border-radius: 4px;
-  padding: 25px;
-  margin: 0 auto;
+  padding: 20px;
+  margin: 0 auto 30px;
 
   .title {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 10px;
     height: 55px;
-    &__day {
+    max-width: 260px;
+
+    &-day {
       font-family: ${mainStyleFonts.mainFont};
       font-weight: ${mainStyleFonts.mainFontBold};
       color: ${mainStyleColors.secondaryColor};
-      font-size: 3.5rem;
-      margin: 10px;
+      font-size: 3rem;
     }
-    &__tea {
+    &-tea {
       font-weight: ${mainStyleFonts.mainFontBold};
       color: ${mainStyleColors.secondaryColor};
       font-size: 2rem;
     }
   }
+
+  .card {
+    display: flex;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+  }
+
   h3 {
     font-family: ${mainStyleFonts.secondaryFont};
     font-weight: ${mainStyleFonts.secondaryFontBold};
     color: ${mainStyleColors.accentLightColor};
     margin: 13px 0;
   }
+
   .footer {
-    margin-top: 25px;
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 25px;
-    width: 285px;
-    justify-content: space-between;
+    width: 70px;
+    height: 100%;
+    justify-content: space-around;
+
     &__box {
       display: flex;
-      gap: 30px;
     }
     &__icon {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 5px;
+      margin-bottom: 15px;
 
       &-temperature {
         margin-bottom: 7px;
