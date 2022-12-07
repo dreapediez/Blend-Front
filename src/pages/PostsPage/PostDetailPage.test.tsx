@@ -20,7 +20,7 @@ describe("Given a Calendar Page", () => {
 
       await waitFor(() => {
         const expectedPostDayOne = screen.queryByRole("heading", {
-          name: "Pancake Stack",
+          name: "Today's post is amazing... Congratulations!",
         });
 
         expect(expectedPostDayOne).toBeInTheDocument();

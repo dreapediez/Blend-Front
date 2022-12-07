@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { ReactComponent as NotPost } from "../../assets/post.svg";
 import Header from "../../components/Header/Header";
 import PostCard from "../../components/PostCard/PostCard";
 import useApi from "../../hooks/useApi/useApi";
@@ -7,6 +8,12 @@ import { useAppSelector } from "../../redux/hooks";
 import PostDetailPageStyled from "./PostDetailPageStyled";
 
 const PostDetailPage = (): JSX.Element => {
+  const snowFlakes: string[] = [];
+
+  for (let i = 0; i < 50; i++) {
+    snowFlakes.push("snowflake");
+  }
+
   const postsList = useAppSelector(({ post }) => post.list);
   const { loadOnePost } = useApi();
   const { idPost } = useParams();
@@ -20,7 +27,20 @@ const PostDetailPage = (): JSX.Element => {
   return (
     <PostDetailPageStyled>
       <Header />
-      {!currentPost ? <h2>HOLI</h2> : <PostCard post={currentPost} />}
+      <h2 className="title">Today's post is amazing... Congratulations!</h2>
+      {!currentPost ? (
+        <div className="not-found">
+          <NotPost className="not-found__icon" data-testid="logo-icon" />
+          <span className="not-found__link">
+            Do you want some tea?
+            <Link to="/calendar" className="not-found__link-anchor">
+              Back to Calendar
+            </Link>
+          </span>
+        </div>
+      ) : (
+        <PostCard post={currentPost} />
+      )}
     </PostDetailPageStyled>
   );
 };
