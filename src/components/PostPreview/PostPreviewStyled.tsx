@@ -49,7 +49,7 @@ const PostPreviewStyled = styled.div`
         font-family: ${mainStyleFonts.mainFont};
         font-weight: ${mainStyleFonts.mainFontBold};
         color: ${mainStyleColors.secondaryColor};
-        font-size: 4rem;
+        font-size: 3rem;
         margin: 10px;
         @media only screen and (min-width: 950px) {
           margin: 0;

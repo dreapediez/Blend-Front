@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import mainStyleColors from "../../styles/mainStyleColors";
+import mainStyleFonts from "../../styles/mainStyleFonts";
 
 const PostFormPageStyled = styled.form`
   display: flex;
@@ -25,12 +27,29 @@ const PostFormPageStyled = styled.form`
       margin: 10px;
     }
   }
-
   .new-post {
     margin: 0 auto 30px;
   }
-  .form__button {
-    margin-top: 20px;
+  .conditions {
+    width: 320px;
+    font-size: 13px;
+    color: ${mainStyleColors.secondaryColor};
+    text-align: left;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    gap: 15px;
+
+    .form-footer__link-anchor {
+      text-decoration: none;
+      font-weight: ${mainStyleFonts.mainFontBold};
+      color: ${mainStyleColors.secondaryColor};
+      margin-left: 5px;
+    }
   }
 `;
 
