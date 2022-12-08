@@ -11,7 +11,7 @@ const WindowStyled = styled.div`
   border: 2px solid ${mainStyleColors.accentColor};
   border-radius: 4px;
   padding: 20px;
-  margin: 0 auto 30px;
+  margin: 10px 0 30px 0;
 
   .title {
     display: flex;
@@ -19,7 +19,7 @@ const WindowStyled = styled.div`
     justify-content: space-around;
     gap: 10px;
     height: 55px;
-    max-width: 260px;
+    max-width: 300px;
 
     &-day {
       font-family: ${mainStyleFonts.mainFont};

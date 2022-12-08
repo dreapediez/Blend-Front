@@ -43,7 +43,7 @@ const LogInPage = (): JSX.Element => {
 
   return (
     <FormStyled>
-      <h2 className="resiter-page__title">Welcome to Blendcommunity!</h2>
+      <h2 className="resiter-page__title">You are back! We missed you...</h2>
       <form onSubmit={handleSubmit}>
         <div className="form__item">
           <FormInput

@@ -44,7 +44,9 @@ const RegisterPage = (): JSX.Element => {
   };
   return (
     <FormStyled>
-      <h2 className="resiter-page__title">Join our community</h2>
+      <h2 className="resiter-page__title">
+        What a great idea, register and become one of us...
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="form__item">
           <FormInput

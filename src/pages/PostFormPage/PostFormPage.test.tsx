@@ -15,9 +15,9 @@ describe("Given a register page", () => {
   const imageInput = /image/i;
   const buttonText = /send/i;
 
-  describe("When it's rendered with the title 'Join our community' and three inputs", () => {
+  describe("When it's rendered with the title 'What a great idea, register and become one of us...' and three inputs", () => {
     test("Then it should show the text received as a title and the corresponding three inputs", async () => {
-      const labelOneDay = "Calendar Day 3";
+      const labelOneDay = "Select a calendar day";
       render(
         <BrowserRouter>
           <Provider store={mockStore}>

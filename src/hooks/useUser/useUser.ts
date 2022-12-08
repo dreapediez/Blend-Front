@@ -29,7 +29,7 @@ const useUser = () => {
       dispatch(
         showModalActionCreator({
           isError: false,
-          modalText: `You are now a new member of Blendcommunity`,
+          modalText: `You are now a new member of BlendCommunity`,
         })
       );
     } catch (error: unknown) {
@@ -65,7 +65,7 @@ const useUser = () => {
       dispatch(
         showModalActionCreator({
           isError: false,
-          modalText: `Just in time, It's almost tea moment`,
+          modalText: `Just in time, It's almost tea moment.`,
         })
       );
     } catch (error: unknown) {

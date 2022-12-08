@@ -21,6 +21,17 @@ const FormStyled = styled.section`
       margin-left: 5px;
     }
   }
+
+  .resiter-page__title {
+    font-family: inherit;
+    font-size: 20px;
+    width: 340px;
+    text-align: center;
+    margin-bottom: 25px;
+    @media only screen and (min-width: 450px) {
+      width: 350px;
+    }
+  }
 `;
 
 export default FormStyled;

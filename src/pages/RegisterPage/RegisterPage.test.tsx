@@ -20,9 +20,10 @@ describe("Given a register page", () => {
   const emailInput = /email/i;
   const buttonText = /register/i;
 
-  describe("When it's rendered with the title 'Join our community' and three inputs", () => {
+  describe("When it's rendered with the title 'What a great idea, register and become one of us...' and three inputs", () => {
     test("Then it should show the text received as a title and the corresponding three inputs", () => {
-      const expectedTitleText = "Join our community";
+      const expectedTitleText =
+        "What a great idea, register and become one of us...";
 
       render(
         <BrowserRouter>

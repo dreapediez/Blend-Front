@@ -11,7 +11,7 @@ import mockToken from "../../mocks/mockToken";
 describe("Given a ProtectionRoute component", () => {
   describe("When it's rendered at welcome page without token at local storage", () => {
     test("Then it should redirects the user to login page", async () => {
-      const headerText = "You are my favorite tea moment";
+      const headerText = "Welcome to BlendCommunity!";
 
       window.localStorage.clear();
 

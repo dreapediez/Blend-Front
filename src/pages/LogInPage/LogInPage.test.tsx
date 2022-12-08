@@ -23,9 +23,9 @@ describe("Given a log in page", () => {
   const passwordInput = /password/i;
   const buttonText = /log in/i;
 
-  describe("When it's rendered with the title 'Welcome to Blendcommunity!' and three inputs", () => {
+  describe("When it's rendered with the title 'You are back! We missed you...' and three inputs", () => {
     test("Then it should show the text received as a title and the corresponding three inputs", async () => {
-      const expectedTitleText = "Welcome to Blendcommunity!";
+      const expectedTitleText = "You are back! We missed you...";
 
       render(<LogInPage />, { wrapper: makeWrapperMockStore });
 
