@@ -119,7 +119,7 @@ const PostPreviewStyled = styled.div`
       margin-top: 10px;
 
       @media only screen and (min-width: 950px) {
-        width: 180px;
+        width: 160px;
         height: 320px;
         justify-content: space-between;
         margin: 0;

@@ -21,9 +21,11 @@ const HomePage = (): JSX.Element => {
             className="welcome-page__logo"
             aria-label="A cup of tea with the text blend"
           />
-          <h2 className="welcome-page__title">
-            You are my favorite tea moment
-          </h2>
+          <h2 className="welcome-page__title">Welcome to BlendCommunity!</h2>
+          <p className="welcome-page__text">
+            A platform where tea addicts and Christmas lovers are happier than
+            Dobby with a new sock.
+          </p>
           <Button
             type="link"
             to="/login"

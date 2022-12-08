@@ -9,7 +9,7 @@ const WelcomePageStyled = styled.header`
   width: 100%;
   height: 100vh;
   padding: 50px 0;
-  gap: 20px;
+  gap: 18px;
 
   .welcome-page__logo {
     width: 360px;
@@ -17,14 +17,30 @@ const WelcomePageStyled = styled.header`
       width: 450px;
     }
   }
-  .welcome-page__title {
-    width: 360px;
-    padding: 5px 20px 20px;
-    font-family: ${mainStyleFonts.secondaryFont};
-    color: ${mainStyleColors.textSecondaryColor};
-    font-size: 25px;
-    text-align: center;
-    margin: 0 0 20px 0;
+  .welcome-page {
+    &__title {
+      width: 350px;
+      padding: 5px 20px 20px;
+      font-family: ${mainStyleFonts.secondaryFont};
+      color: ${mainStyleColors.accentColor};
+      font-weight: ${mainStyleFonts.mainFontBold};
+      font-size: 25px;
+      text-align: center;
+      margin: 0;
+      @media only screen and (min-width: 450px) {
+        width: 450px;
+      }
+    }
+    &__text {
+      font-family: inherit;
+      font-size: 20px;
+      width: 350px;
+      text-align: center;
+      margin-bottom: 25px;
+      @media only screen and (min-width: 450px) {
+        width: 400px;
+      }
+    }
   }
 `;
 

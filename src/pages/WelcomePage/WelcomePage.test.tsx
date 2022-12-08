@@ -5,9 +5,9 @@ import { mockStore } from "../../mocks/makeWrapper";
 import WelcomePage from "./WelcomePage";
 
 describe("Given a welcome page", () => {
-  describe("When it's rendered with the title 'You are my favorite tea moment", () => {
+  describe("When it's rendered with the title 'Welcome to BlendCommunity!", () => {
     test("Then it should show the logo with text received", () => {
-      const expectedLogoText = "You are my favorite tea moment";
+      const expectedLogoText = "Welcome to BlendCommunity!";
 
       render(
         <BrowserRouter>

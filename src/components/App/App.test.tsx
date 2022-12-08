@@ -34,7 +34,7 @@ describe("Given an App component", () => {
 
   describe("When it's rendered with path '/login'", () => {
     test("Then it should render login page with their header component", async () => {
-      const headerText = "Welcome to Blendcommunity!";
+      const headerText = "You are back! We missed you...";
 
       await act(() => {
         render(
@@ -58,7 +58,7 @@ describe("Given an App component", () => {
 
   describe("When it's rendered with path '/register'", () => {
     test("Then it should render register page with their header component", async () => {
-      const headerText = "Join our community";
+      const headerText = "What a great idea, register and become one of us...";
 
       await act(() => {
         render(

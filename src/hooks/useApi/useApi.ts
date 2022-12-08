@@ -91,7 +91,7 @@ const useApi = () => {
         dispatch(
           showModalActionCreator({
             isError: false,
-            modalText: "Post deleted successfully",
+            modalText: "Post deleted successfully.",
           })
         );
       } catch (error: unknown) {
