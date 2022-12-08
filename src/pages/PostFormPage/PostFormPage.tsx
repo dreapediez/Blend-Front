@@ -11,6 +11,7 @@ import windows from "../../components/Window/windows";
 import { WindowStructure } from "../../types/calendarTypes";
 import { useAppSelector } from "../../redux/hooks";
 import { ReactComponent as NewPost } from "../../assets/new-post.svg";
+import { Link } from "react-router-dom";
 
 const PostFormPage = (): JSX.Element => {
   const { createPost, loadAllPosts } = useApi();
@@ -95,7 +96,7 @@ const PostFormPage = (): JSX.Element => {
       <div className="container">
         <SelectFormInput action={handleFormValues} windows={windowsData} />
         <div className="input">
-          <span className="input__text">Have you added any ingredient?</span>
+          <span className="input__text">Have you added any ingredient?*</span>
           <SimpleFormInput
             className="input__box"
             name="answer1"
@@ -103,7 +104,7 @@ const PostFormPage = (): JSX.Element => {
           />
         </div>
         <div className="input">
-          <span className="input__text">Recommend a song for today’s tea:</span>
+          <span className="input__text">Recommend a song for today’s tea*</span>
           <SimpleFormInput
             className="input__box"
             name="answer2"
@@ -111,7 +112,7 @@ const PostFormPage = (): JSX.Element => {
           />
         </div>
         <div className="input">
-          <span className="input__text">Recommend a book for today’s tea:</span>
+          <span className="input__text">Recommend a book for today’s tea*</span>
           <SimpleFormInput
             className="input__box"
             name="answer3"
@@ -119,7 +120,7 @@ const PostFormPage = (): JSX.Element => {
           />
         </div>
         <div className="input">
-          <span className="input__text">How about your tea moment?</span>
+          <span className="input__text">How about your tea moment?*</span>
           <SimpleFormInput
             className="input__box"
             name="answer4"
@@ -127,17 +128,26 @@ const PostFormPage = (): JSX.Element => {
           />
         </div>
         <FormInput
-          placeholder="Add a picture"
+          placeholder="Add a picture by URL*"
           type="text"
           name="image"
           action={handleFormValues}
         />
-        <Button
-          type="button"
-          className="form__button"
-          text="Send"
-          styletype="light"
-        />
+        <span className="conditions">*Mandatory field</span>
+        <div className="form-footer">
+          <Button
+            type="button"
+            className="form-footer__button"
+            text="Send"
+            styletype="light"
+          />
+          <span className="form-footer__link">
+            Finished with today's post?
+            <Link to="/calendar" className="form-footer__link-anchor">
+              Back Calendar
+            </Link>
+          </span>
+        </div>
       </div>
     </PostFormPageStyled>
   );

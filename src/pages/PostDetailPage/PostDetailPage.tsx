@@ -41,6 +41,14 @@ const PostDetailPage = (): JSX.Element => {
       ) : (
         <PostCard post={currentPost} />
       )}
+      <div className="form-footer">
+        <span className="form-footer__link">
+          Do you want another tea?
+          <Link to="/calendar" className="form-footer__link-anchor">
+            Back Calendar
+          </Link>
+        </span>
+      </div>
     </PostDetailPageStyled>
   );
 };

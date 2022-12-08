@@ -57,16 +57,16 @@ const RegisterPage = (): JSX.Element => {
             action={handleFormValues}
           />
           <FormInput
-            placeholder="Password"
-            type="password"
-            name="register_password"
+            placeholder="Email"
+            type="email"
+            name="email"
             required={true}
             action={handleFormValues}
           />
           <FormInput
-            placeholder="Email"
-            type="email"
-            name="email"
+            placeholder="Password"
+            type="password"
+            name="register_password"
             required={true}
             action={handleFormValues}
           />
